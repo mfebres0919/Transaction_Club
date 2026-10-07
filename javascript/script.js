@@ -26,107 +26,46 @@ if (heroSlides.length > 1 && !reduceMotion) {
 
 
 /* ==========================================================================
-   HOMEPAGE — testimonials slider
-   Advances every 4s; the arrows step manually and restart the clock.
-   Pauses while the pointer is over the reviews or keyboard focus is inside
-   them, so nobody loses a review mid-sentence. Off for reduced motion.
-   ========================================================================== */
-
-const reviews = document.querySelector('[data-reviews]');
-
-if (reviews) {
-  const slides = reviews.querySelectorAll('.review');
-  const track = reviews.querySelector('.reviews__track');
-  const counter = reviews.querySelector('[data-reviews-current]');
-  const REVIEW_DURATION = 4000;
-  let index = 0;
-  let timer = null;
-
-  function showReview(next) {
-    slides[index].classList.remove('is-active');
-    slides[index].setAttribute('aria-hidden', 'true');
-    slides[index].inert = true;
-
-    index = (next + slides.length) % slides.length;
-
-    slides[index].classList.add('is-active');
-    slides[index].removeAttribute('aria-hidden');
-    slides[index].inert = false;
-    if (counter) counter.textContent = index + 1;
-  }
-
-  function stopReviews() {
-    clearInterval(timer);
-    timer = null;
-  }
-
-  function startReviews() {
-    if (reduceMotion || slides.length < 2) return;
-    stopReviews();
-    timer = setInterval(() => showReview(index + 1), REVIEW_DURATION);
-  }
-
-  function step(direction) {
-    // Announce manual changes to screen readers; stay quiet while auto-playing
-    track.setAttribute('aria-live', 'polite');
-    showReview(index + direction);
-    startReviews();
-  }
-
-  reviews.querySelector('[data-reviews-prev]').addEventListener('click', () => step(-1));
-  reviews.querySelector('[data-reviews-next]').addEventListener('click', () => step(1));
-
-  reviews.addEventListener('mouseenter', stopReviews);
-  reviews.addEventListener('mouseleave', startReviews);
-  reviews.addEventListener('focusin', stopReviews);
-  reviews.addEventListener('focusout', (event) => {
-    if (!reviews.contains(event.relatedTarget)) startReviews();
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopReviews();
-    else startReviews();
-  });
-
-  startReviews();
-}
-
-
-/* ==========================================================================
    HOMEPAGE — process card slider
-   Every 6s the row slides one card left; after the last card is fully in
-   view it glides back to the first. Arrows (and a swipe on touch screens)
-   step manually and restart the clock. Pauses on hover / keyboard focus;
-   no auto-play for reduced motion.
+   The row is a native horizontal scroller with snap points (styles.css), so
+   on phones a swipe follows the finger with momentum and settles on a card.
+   Every 6s it scrolls one card along; after the last card is fully in view
+   it glides back to the first. Arrows step manually and restart the clock.
+   Pauses on hover, keyboard focus and touch; no auto-play for reduced motion.
    ========================================================================== */
 
 const process = document.querySelector('[data-process]');
 
 if (process) {
   const viewport = process.querySelector('.process__viewport');
-  const track = process.querySelector('.process__track');
-  const cards = track.querySelectorAll('.process-card');
+  const cards = viewport.querySelectorAll('.process-card');
   const PROCESS_DURATION = 6000;
-  let current = 0;
+  const RESUME_AFTER_TOUCH = 8000; // give a swiper time to read before auto-play resumes
   let processTimer = null;
+  let resumeTimer = null;
 
-  // How far the row can travel before the last card is flush with the edge
-  function maxOffset() {
-    return Math.max(0, track.scrollWidth - viewport.clientWidth);
+  // Card nearest the left edge, worked out from where the row has scrolled to
+  function currentIndex() {
+    const start = cards[0].offsetLeft;
+    let nearest = 0;
+    cards.forEach((card, i) => {
+      if (Math.abs(card.offsetLeft - start - viewport.scrollLeft) <
+          Math.abs(cards[nearest].offsetLeft - start - viewport.scrollLeft)) nearest = i;
+    });
+    return nearest;
   }
 
-  function lastIndex() {
-    const max = maxOffset();
-    const i = Array.prototype.findIndex.call(cards, (card) => card.offsetLeft >= max);
-    return i === -1 ? cards.length - 1 : i;
+  function atEnd() {
+    return viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 4;
   }
 
   function goToCard(next) {
-    const last = lastIndex();
-    if (next > last) next = 0;
-    if (next < 0) next = last;
-    current = next;
-    track.style.transform = `translateX(-${Math.min(cards[current].offsetLeft, maxOffset())}px)`;
+    if (next >= cards.length || (next > currentIndex() && atEnd())) next = 0;
+    if (next < 0) next = cards.length - 1;
+    viewport.scrollTo({
+      left: cards[next].offsetLeft - cards[0].offsetLeft,
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    });
   }
 
   function stopProcess() {
@@ -137,27 +76,24 @@ if (process) {
   function startProcess() {
     if (reduceMotion || cards.length < 2) return;
     stopProcess();
-    processTimer = setInterval(() => goToCard(current + 1), PROCESS_DURATION);
+    processTimer = setInterval(() => goToCard(currentIndex() + 1), PROCESS_DURATION);
   }
 
   function stepProcess(direction) {
-    goToCard(current + direction);
+    goToCard(currentIndex() + direction);
     startProcess();
   }
 
   process.querySelector('[data-process-prev]').addEventListener('click', () => stepProcess(-1));
   process.querySelector('[data-process-next]').addEventListener('click', () => stepProcess(1));
 
-  // Swipe on touch screens
-  let touchStartX = null;
-  viewport.addEventListener('touchstart', (event) => {
-    touchStartX = event.touches[0].clientX;
+  // Touch: hold auto-play while the visitor is swiping and reading
+  viewport.addEventListener('touchstart', () => {
+    stopProcess();
+    clearTimeout(resumeTimer);
   }, { passive: true });
-  viewport.addEventListener('touchend', (event) => {
-    if (touchStartX === null) return;
-    const distance = event.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(distance) > 40) stepProcess(distance < 0 ? 1 : -1);
-    touchStartX = null;
+  viewport.addEventListener('touchend', () => {
+    resumeTimer = setTimeout(startProcess, RESUME_AFTER_TOUCH);
   });
 
   process.addEventListener('mouseenter', stopProcess);
@@ -171,9 +107,6 @@ if (process) {
     if (document.hidden) stopProcess();
     else startProcess();
   });
-
-  // Card widths change across breakpoints; re-align the current card
-  window.addEventListener('resize', () => goToCard(current));
 
   startProcess();
 }
