@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Transaction Club | Transaction Coordination for Real Estate Agents</title>
+  <meta name="description" content="The Transaction Club manages your files and chases signatures so you can focus on selling. 10 years of transaction coordination for real estate agents.">
+
+  <!-- ==========================================================================
+       PERFORMANCE: preload above-the-fold fonts only (hero heading + body/nav)
+       ========================================================================== -->
+  <link rel="preload" href="fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/fira-sans-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/pinyon-script-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Hero slide 1 is the LCP image: preload the crop each device will actually use -->
+  <link rel="preload" as="image" type="image/webp" href="images/home/hero-1-m.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="images/home/hero-1.webp" media="(min-width: 768px)" fetchpriority="high">
+
+  <!-- global.css (tokens, fonts, nav, buttons) must load before styles.css -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="javascript/global.js" defer></script>
+  <script src="javascript/script.js" defer></script>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==========================================================================
+       HEADER — transparent over the hero, snaps to white on scroll (global.js)
+       ========================================================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- TODO: swap the text wordmark for the logo SVG once received -->
+      <a class="header__logo" href="index.html" aria-label="The Transaction Club, home">
+        <span class="header__logo-small">The</span>
+        <span class="header__logo-name">Transaction Club</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="html/about.html">About</a></li>
+          <li><a class="nav__link" href="html/process.html">Our Process</a></li>
+          <li><a class="nav__link" href="html/gallery.html">Gallery</a></li>
+          <li><a class="nav__link" href="html/contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="#closing-gift">Claim Your Gift</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========================================================================
+         HERO — 4 rotating photos (fade + slow zoom) with the closing-gift form
+         ======================================================================== -->
+    <section class="hero" aria-labelledby="hero-title">
+
+      <!-- Background slides. Decorative (alt=""), so screen readers skip them.
+           Desktop: 1672x941. Mobile (-m): 560x941 portrait crops centred on each
+           photo's subject. Slide 1 loads eagerly and is preloaded in <head>;
+           slides 2–4 are lazy. Source PNGs live in /source-images (not deployed). -->
+      <div class="hero__slides" aria-hidden="true">
+        <div class="hero__slide is-active">
+          <div class="hero__media">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/hero-1-m.webp" type="image/webp" width="560" height="941">
+              <source media="(max-width: 767px)" srcset="images/home/hero-1-m.jpg" type="image/jpeg" width="560" height="941">
+              <source srcset="images/home/hero-1.webp" type="image/webp">
+              <img class="hero__img" src="images/home/hero-1.jpg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="hero__slide">
+          <div class="hero__media">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/hero-2-m.webp" type="image/webp" width="560" height="941">
+              <source media="(max-width: 767px)" srcset="images/home/hero-2-m.jpg" type="image/jpeg" width="560" height="941">
+              <source srcset="images/home/hero-2.webp" type="image/webp">
+              <img class="hero__img" src="images/home/hero-2.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="hero__slide">
+          <div class="hero__media">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/hero-3-m.webp" type="image/webp" width="560" height="941">
+              <source media="(max-width: 767px)" srcset="images/home/hero-3-m.jpg" type="image/jpeg" width="560" height="941">
+              <source srcset="images/home/hero-3.webp" type="image/webp">
+              <img class="hero__img" src="images/home/hero-3.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="hero__slide">
+          <div class="hero__media">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/hero-4-m.webp" type="image/webp" width="560" height="941">
+              <source media="(max-width: 767px)" srcset="images/home/hero-4-m.jpg" type="image/jpeg" width="560" height="941">
+              <source srcset="images/home/hero-4.webp" type="image/webp">
+              <img class="hero__img" src="images/home/hero-4.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+
+        <div class="hero__content">
+          <p class="hero__eyebrow">Transaction Coordination for Real Estate Agents</p>
+          <h1 class="hero__title" id="hero-title">
+            You close the deal.
+            <span class="hero__title-accent">We handle the file.</span>
+          </h1>
+          <p class="hero__text">For 10 years, The Transaction Club has managed files and chased signatures for busy agents, so you can get back to selling.</p>
+          <div class="hero__actions">
+            <a class="btn btn--light" href="html/contact.html">Work With Us</a>
+            <a class="btn btn--outline-light" href="html/process.html">See Our Process</a>
+          </div>
+        </div>
+
+        <!-- Closing gift form. TODO: connect to email + Google Sheet logging -->
+        <div class="gift-card" id="closing-gift">
+          <p class="gift-card__eyebrow">Closed a file with us?</p>
+          <h2 class="gift-card__title">Claim your free closing gift</h2>
+          <p class="gift-card__text">Hand-delivered same day if you're local, or mailed within 48 hours anywhere in-state.</p>
+
+          <form class="gift-form" action="#" method="post">
+            <div class="form-field">
+              <label class="form-field__label" for="gift-name">Your name</label>
+              <input class="form-field__input" id="gift-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="gift-address">Your mailing address</label>
+              <input class="form-field__input" id="gift-address" name="address" type="text" autocomplete="street-address" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="gift-listing">Listing address</label>
+              <input class="form-field__input" id="gift-listing" name="listing_address" type="text" required>
+            </div>
+            <button class="btn btn--primary gift-form__submit" type="submit">Claim My Gift</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Arc divider: the About section's colour rising into the photos -->
+      <div class="section-divider section-divider--arc" aria-hidden="true"></div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT — two overlapping photos + "years" badge, intro copy, checklist
+         Copy is a stand-in drafted from the discovery call; swap in Peter and
+         Jiang's own words when they arrive.
+         ======================================================================== -->
+    <section class="about has-texture" id="about" aria-labelledby="about-title">
+      <div class="container about__inner">
+
+        <!-- Below the fold, so both photos lazy load. Desktop files are ~2x each
+             frame's displayed size; -m versions serve phones. Source PNGs live in
+             /source-images (not deployed). -->
+        <div class="about__media">
+          <div class="about__photo about__photo--main">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/about-team-m.webp" type="image/webp" width="560" height="487">
+              <source media="(max-width: 767px)" srcset="images/home/about-team-m.jpg" type="image/jpeg" width="560" height="487">
+              <source srcset="images/home/about-team.webp" type="image/webp">
+              <img src="images/home/about-team.jpg" alt="Two coordinators working through a client's file, one signing paperwork and one on a laptop" width="880" height="765" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="about__photo about__photo--inset">
+            <picture>
+              <source media="(max-width: 767px)" srcset="images/home/about-signing-m.webp" type="image/webp" width="480" height="360">
+              <source media="(max-width: 767px)" srcset="images/home/about-signing-m.jpg" type="image/jpeg" width="480" height="360">
+              <source srcset="images/home/about-signing.webp" type="image/webp">
+              <img src="images/home/about-signing.jpg" alt="A hand signing closing documents with a gold pen" width="760" height="570" loading="lazy" decoding="async">
+            </picture>
+          </div>
+
+          <!-- Spinning ring text; the number in the middle stays still -->
+          <div class="about__badge">
+            <svg class="about__badge-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <defs>
+                <path id="about-badge-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
+              </defs>
+              <text>
+                <textPath href="#about-badge-circle" textLength="270">YEARS OF EXPERIENCE ✦ YEARS OF EXPERIENCE ✦</textPath>
+              </text>
+            </svg>
+            <p class="about__badge-number"><span>10</span><span class="visually-hidden"> years of experience</span></p>
+          </div>
+
+          <!-- Decorative sparkles -->
+          <svg class="about__spark about__spark--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+          <svg class="about__spark about__spark--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+        </div>
+
+        <div class="about__content">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            About Us
+          </p>
+
+          <h2 class="section-title" id="about-title">
+            The coordinators agents <span class="section-title__accent">trust</span> with their files
+          </h2>
+
+          <p class="about__text">
+            Peter Liang and Jiang started The Transaction Club to take the paperwork off agents' plates.
+            For 10 years we've managed files, tracked deadlines and chased signatures from contract to
+            close, so the agents we work with can stay focused on their clients and their next listing.
+          </p>
+
+          <ul class="about__list">
+            <li class="check-item">10 Years in Business</li>
+            <li class="check-item">Files Handled to Close</li>
+            <li class="check-item">Signatures Chased for You</li>
+            <li class="check-item">A Gift With Every Closing</li>
+          </ul>
+
+          <a class="btn btn--primary btn--badge" href="html/about.html">
+            Read More About Us
+            <span class="btn__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STATS MARQUEE — drifts slowly left to right (pure CSS, styles.css).
+         The list is repeated once (aria-hidden) so the loop is seamless;
+         screen readers only read the first copy. Pauses on hover; stands
+         still for reduced motion. Edit BOTH lists when changing a stat.
+         ======================================================================== -->
+    <section class="stats" aria-label="The Transaction Club at a glance">
+      <div class="stats__frame">
+        <div class="stats__viewport">
+          <div class="stats__track">
+            <ul class="stats__group">
+              <li class="stat">
+                <p class="stat__number">10+</p>
+                <p class="stat__label">Years in Business</p>
+                <p class="stat__text">A decade of managing files and chasing signatures for real estate agents.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">Same Day</p>
+                <p class="stat__label">Local Gift Drop-off</p>
+                <p class="stat__text">Close a file with us locally and your gift is hand-delivered that day.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">48 hrs</p>
+                <p class="stat__label">Gifts Mailed In-State</p>
+                <p class="stat__text">Anywhere else in the state, your closing gift ships within two days.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">2</p>
+                <p class="stat__label">Dedicated Partners</p>
+                <p class="stat__text">Peter and Jiang handle your files themselves, from contract to close.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">0</p>
+                <p class="stat__label">Portals to Learn</p>
+                <p class="stat__text">No logins or new software. Send us the file and we take it from there.</p>
+              </li>
+            </ul>
+            <ul class="stats__group" aria-hidden="true">
+              <li class="stat">
+                <p class="stat__number">10+</p>
+                <p class="stat__label">Years in Business</p>
+                <p class="stat__text">A decade of managing files and chasing signatures for real estate agents.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">Same Day</p>
+                <p class="stat__label">Local Gift Drop-off</p>
+                <p class="stat__text">Close a file with us locally and your gift is hand-delivered that day.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">48 hrs</p>
+                <p class="stat__label">Gifts Mailed In-State</p>
+                <p class="stat__text">Anywhere else in the state, your closing gift ships within two days.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">2</p>
+                <p class="stat__label">Dedicated Partners</p>
+                <p class="stat__text">Peter and Jiang handle your files themselves, from contract to close.</p>
+              </li>
+              <li class="stat">
+                <p class="stat__number">0</p>
+                <p class="stat__label">Portals to Learn</p>
+                <p class="stat__text">No logins or new software. Send us the file and we take it from there.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SERVICES — header on tan; the cards straddle the tan/white split
+         (the white band starts partway down the cards, see styles.css).
+         Card photos: 800x600 desktop, 640x480 (-m) phones; source PNGs in
+         /source-images. Copy is a stand-in drafted from the discovery call.
+         ======================================================================== -->
+    <section class="services has-texture has-texture--particles" aria-labelledby="services-title">
+      <div class="services__top">
+        <!-- Bubble divider: the stats strip's white flowing down into this one -->
+        <div class="section-divider section-divider--top section-divider--bubble" aria-hidden="true"></div>
+
+        <div class="container section-head">
+          <div>
+            <p class="eyebrow">
+              <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+              Our Services
+            </p>
+            <h2 class="section-title" id="services-title">
+              Every step from contract to <span class="section-title__accent">closing</span>, handled for you
+            </h2>
+          </div>
+
+          <a class="btn btn--primary btn--badge" href="html/process.html">
+            See Our Process
+            <span class="btn__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="services__bottom">
+        <ul class="container services__grid">
+          <li class="service-card">
+            <div class="service-card__head">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" /><path d="M8 13.5h8" /></svg>
+              </span>
+              <h3 class="service-card__title">
+                <a class="service-card__link" href="html/process.html">File Management</a>
+              </h3>
+              <span class="service-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg></span>
+            </div>
+            <p class="service-card__text">Every document for every deal, organised in one place and kept current from listing to close.</p>
+            <div class="service-card__photo">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/home/services-file-management-m.webp" type="image/webp" width="640" height="480">
+                <source media="(max-width: 767px)" srcset="images/home/services-file-management-m.jpg" type="image/jpeg" width="640" height="480">
+                <source srcset="images/home/services-file-management.webp" type="image/webp">
+                <img src="images/home/services-file-management.jpg" alt="A desk organiser filled with neatly tabbed transaction files" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </li>
+          <li class="service-card">
+            <div class="service-card__head">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2" /><path d="M16 2.5v4" /><path d="M8 2.5v4" /><path d="M3 9.5h18" /><path d="m8.5 15 2.5 2.5 4.5-4.5" /></svg>
+              </span>
+              <h3 class="service-card__title">
+                <a class="service-card__link" href="html/process.html">Deadline Tracking</a>
+              </h3>
+              <span class="service-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg></span>
+            </div>
+            <p class="service-card__text">Inspection, appraisal, financing, closing: we track every contingency and date so nothing slips.</p>
+            <div class="service-card__photo">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/home/services-deadline-tracking-m.webp" type="image/webp" width="640" height="480">
+                <source media="(max-width: 767px)" srcset="images/home/services-deadline-tracking-m.jpg" type="image/jpeg" width="640" height="480">
+                <source srcset="images/home/services-deadline-tracking.webp" type="image/webp">
+                <img src="images/home/services-deadline-tracking.jpg" alt="An open planner with key dates highlighted beside a pen and coffee" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </li>
+          <li class="service-card">
+            <div class="service-card__head">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" /><path d="M13 21h8" /></svg>
+              </span>
+              <h3 class="service-card__title">
+                <a class="service-card__link" href="html/process.html">Signature Coordination</a>
+              </h3>
+              <span class="service-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg></span>
+            </div>
+            <p class="service-card__text">We send, chase and collect every signature and initial, and check the file is complete before it reaches your broker.</p>
+            <div class="service-card__photo">
+              <picture>
+                <source media="(max-width: 767px)" srcset="images/home/services-signature-coordination-m.webp" type="image/webp" width="640" height="480">
+                <source media="(max-width: 767px)" srcset="images/home/services-signature-coordination-m.jpg" type="image/jpeg" width="640" height="480">
+                <source srcset="images/home/services-signature-coordination.webp" type="image/webp">
+                <img src="images/home/services-signature-coordination.jpg" alt="A tablet showing an e-signature line, with a stylus beside it" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================
+         TESTIMONIALS — rotating Google reviews (script.js) + photo with a
+         Google card. PLACEHOLDER REVIEWS: the quotes and "Agent Name" lines
+         are stand-ins and must be replaced with real Google reviews before
+         launch. TODO: once the Google Business Profile exists, swap every
+         href="#testimonials" below for the profile's reviews URL.
+         ======================================================================== -->
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+      <!-- Bubble divider: the Services green flowing down into this section -->
+      <div class="section-divider section-divider--top section-divider--bubble" aria-hidden="true"></div>
+
+      <div class="container">
+
+        <header class="testimonials__head">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Testimonials
+          </p>
+          <h2 class="section-title" id="testimonials-title">
+            What agents <span class="section-title__accent">say</span> about us
+          </h2>
+          <p class="testimonials__intro">Reviews from the agents whose files we've carried from contract to close.</p>
+        </header>
+
+        <div class="testimonials__inner">
+
+          <div class="reviews" aria-roledescription="carousel" aria-label="Agent reviews" data-reviews>
+            <svg class="reviews__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V21.6C0 9.6 5.4 2.4 16.2 0l2.2 4.6C12.6 6.4 9.6 10.2 9.4 16H18v20H0Zm28.6 0V21.6C28.6 9.6 34 2.4 44.8 0L47 4.6c-5.8 1.8-8.8 5.6-9 11.4h8.6v20H28.6Z"/></svg>
+
+            <div class="reviews__track" aria-live="off">
+            <figure class="review is-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg></span>
+              <blockquote class="review__quote">
+                <p>&ldquo;They took every file off my plate. Deadlines tracked, signatures chased, and I got a heads-up before anything could slip. I closed more deals this year because I wasn't buried in paperwork.&rdquo;</p>
+              </blockquote>
+              <figcaption class="review__author">
+                <span class="review__avatar" aria-hidden="true">AN</span>
+                <span class="review__meta">
+                  <span class="review__name">Agent Name</span>
+                  <span class="review__role">Real Estate Agent, Brokerage</span>
+                </span>
+                <a class="review__source" href="#testimonials">
+                  <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg>
+                  <span>Posted on Google</span>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="review" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true" inert>
+              <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg></span>
+              <blockquote class="review__quote">
+                <p>&ldquo;I've worked with a few coordinators, and nobody stays on top of a file like Peter and Jiang. My clients noticed the difference too. Everything just moved.&rdquo;</p>
+              </blockquote>
+              <figcaption class="review__author">
+                <span class="review__avatar" aria-hidden="true">AN</span>
+                <span class="review__meta">
+                  <span class="review__name">Agent Name</span>
+                  <span class="review__role">Real Estate Agent, Brokerage</span>
+                </span>
+                <a class="review__source" href="#testimonials">
+                  <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg>
+                  <span>Posted on Google</span>
+                </a>
+              </figcaption>
+            </figure>
+            <figure class="review" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true" inert>
+              <span class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 6 6.56.95-4.75 4.63 1.12 6.53L12 17.52l-5.87 3.09 1.12-6.53L2.5 9.45l6.56-.95Z"/></svg></span>
+              <blockquote class="review__quote">
+                <p>&ldquo;Fast, organised and easy to reach. The closing gift was a lovely touch, and my client still talks about it. I send them every file now.&rdquo;</p>
+              </blockquote>
+              <figcaption class="review__author">
+                <span class="review__avatar" aria-hidden="true">AN</span>
+                <span class="review__meta">
+                  <span class="review__name">Agent Name</span>
+                  <span class="review__role">Real Estate Agent, Brokerage</span>
+                </span>
+                <a class="review__source" href="#testimonials">
+                  <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg>
+                  <span>Posted on Google</span>
+                </a>
+              </figcaption>
+            </figure>
+            </div>
+
+            <div class="reviews__controls">
+              <button class="reviews__arrow" type="button" aria-label="Previous review" data-reviews-prev>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+              </button>
+              <button class="reviews__arrow" type="button" aria-label="Next review" data-reviews-next>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+              </button>
+              <p class="reviews__count" aria-hidden="true"><span data-reviews-current>1</span> / 3</p>
+            </div>
+          </div>
+
+          <div class="testimonials__media">
+            <!-- Source is only 668x459, so it is served at its cropped native size
+                 (510x459, no upscaling). Swap in a larger original if one exists. -->
+            <div class="testimonials__photo">
+              <picture>
+                <source srcset="images/home/testimonials-bridge.webp" type="image/webp">
+                <img src="images/home/testimonials-bridge.jpg" alt="The San Francisco–Oakland Bay Bridge and city skyline at sunset" width="510" height="459" loading="lazy" decoding="async">
+              </picture>
+            </div>
+
+            <a class="google-card" href="#testimonials">
+              <span class="google-card__top">
+                <span class="google-card__logo"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg></span>
+                <span class="google-card__title">Google Reviews</span>
+              </span>
+              <span class="google-card__text">See what agents say about The Transaction Club</span>
+              <span class="google-card__cta">
+                Read our reviews
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PROCESS — photo left, small photo top right, intro copy, and a row of
+         step cards that slides one card left every 6s (script.js).
+         Main photo: 900x1086 portrait crop on desktop, 720x540 (-m) on phones
+         and tablets, where its frame is 4:3. Inset: 460x317, desktop (1280px+)
+         only, so phones never download it. Source PNGs in /source-images.
+         Copy is a stand-in drafted from the discovery call.
+         ======================================================================== -->
+    <section class="process" aria-labelledby="process-title">
+      <!-- Arc divider: the Testimonials colour hanging down into the green -->
+      <div class="section-divider section-divider--top section-divider--arc" aria-hidden="true"></div>
+
+      <div class="process__photo process__photo--main">
+        <picture>
+          <source media="(max-width: 1023px)" srcset="images/home/process-desk-m.webp" type="image/webp" width="720" height="540">
+          <source media="(max-width: 1023px)" srcset="images/home/process-desk-m.jpg" type="image/jpeg" width="720" height="540">
+          <source srcset="images/home/process-desk.webp" type="image/webp">
+          <img src="images/home/process-desk.jpg" alt="A coordinator pointing out a listing on a laptop while an agent takes notes" width="900" height="1086" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="process__photo process__photo--inset">
+        <picture>
+          <source srcset="images/home/process-keys.webp" type="image/webp">
+          <img src="images/home/process-keys.jpg" alt="House keys being handed over across a desk at closing" width="460" height="317" loading="lazy" decoding="async">
+        </picture>
+      </div>
+
+      <div class="container">
+        <div class="process__intro">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Our Process
+          </p>
+          <h2 class="section-title" id="process-title">
+            From signed contract to <span class="section-title__accent">closed</span>, step by step
+          </h2>
+          <p class="process__text">
+            You hand us the file and we carry it the rest of the way. Here's exactly what happens
+            between the signed contract and the closing table.
+          </p>
+        </div>
+
+        <div class="process__slider" aria-roledescription="carousel" aria-label="Our process, step by step" data-process>
+          <div class="process__viewport">
+            <ol class="process__track">
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 1 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" /><path d="M14 3v5h5" /><path d="M9 13h6" /><path d="M9 17h4" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">01</span>
+              </div>
+              <h3 class="process-card__title">Send Us the Contract</h3>
+              <p class="process-card__text">Forward the executed contract and we open your file the same day.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 1: Send Us the Contract</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 2 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2" /><path d="M16 2.5v4" /><path d="M8 2.5v4" /><path d="M3 9.5h18" /><path d="M8 14h3" /><path d="M8 17.5h6" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">02</span>
+              </div>
+              <h3 class="process-card__title">We Build the Timeline</h3>
+              <p class="process-card__text">Every contingency, deadline and closing date mapped out and shared with you.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 2: We Build the Timeline</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 3 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20a6.5 6.5 0 0 1 13 0" /><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8" /><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">03</span>
+              </div>
+              <h3 class="process-card__title">We Keep Everyone Moving</h3>
+              <p class="process-card__text">Lender, title and the other agent kept informed and on schedule, so you don't have to.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 3: We Keep Everyone Moving</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 4 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">04</span>
+              </div>
+              <h3 class="process-card__title">Signatures Collected</h3>
+              <p class="process-card__text">We send, chase and collect every signature and initial, and check each page.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 4: Signatures Collected</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 5 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6Z" /><path d="m9 12 2 2 4-4" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">05</span>
+              </div>
+              <h3 class="process-card__title">Compliance Review</h3>
+              <p class="process-card__text">Your file is checked for completeness before it ever reaches your broker.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 5: Compliance Review</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            <li class="process-card" role="group" aria-roledescription="slide" aria-label="Step 6 of 6">
+              <div class="process-card__top">
+                <span class="process-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5" /></svg>
+                </span>
+                <span class="process-card__number" aria-hidden="true">06</span>
+              </div>
+              <h3 class="process-card__title">Closed &amp; Celebrated</h3>
+              <p class="process-card__text">You close, and your closing gift is on its way: same day if local, 48 hours in-state.</p>
+              <a class="process-card__link" href="html/process.html">
+                Read More<span class="visually-hidden"> about step 6: Closed &amp; Celebrated</span>
+                <span class="process-card__link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+              </a>
+            </li>
+            </ol>
+          </div>
+
+          <div class="process__controls">
+            <button class="process__arrow" type="button" aria-label="Previous step" data-process-prev>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button class="process__arrow" type="button" aria-label="Next step" data-process-next>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FINAL CTA — inset photo banner (never touches the screen edges) that
+         straddles the green/cream split, like the service cards. Both buttons
+         jump to #contact, the contact section that goes directly below.
+         Photo: 1448x579 desktop banner, 640x800 (-m) portrait for phones.
+         ======================================================================== -->
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <span class="final-cta__spark final-cta__spark--a" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg></span>
+      <span class="final-cta__spark final-cta__spark--b" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg></span>
+
+      <div class="final-cta__banner">
+        <div class="final-cta__bg" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcset="images/home/final-cta-m.webp" type="image/webp" width="640" height="800">
+            <source media="(max-width: 767px)" srcset="images/home/final-cta-m.jpg" type="image/jpeg" width="640" height="800">
+            <source srcset="images/home/final-cta.webp" type="image/webp">
+            <img src="images/home/final-cta.jpg" alt="" width="1448" height="579" loading="lazy" decoding="async">
+          </picture>
+        </div>
+
+        <div class="final-cta__content">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Ready When You Are
+          </p>
+          <h2 class="final-cta__title" id="final-cta-title">
+            Hand us your next file.
+            <span class="final-cta__title-accent">We'll take it to the closing table.</span>
+          </h2>
+          <div class="final-cta__actions">
+            <a class="btn btn--light btn--badge" href="#contact">
+              Start a File With Us
+              <span class="btn__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+              </span>
+            </a>
+            <a class="btn btn--outline-light" href="#contact">Ask Us a Question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT — map + contact details on the left, enquiry form on the right.
+         Final CTA buttons link here (#contact).
+         PLACEHOLDERS: phone number, email address and office hours below are
+         stand-ins — replace with the client's real details before launch.
+         TODO: form posts nowhere yet. Point action= at the form endpoint
+         (e.g. https://formspree.io/f/FORM_ID) once the account exists.
+         ======================================================================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+
+        <header class="contact__head">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Contact Us
+          </p>
+          <h2 class="section-title" id="contact-title">
+            Let's get your next file <span class="section-title__accent">moving</span>
+          </h2>
+        </header>
+
+        <div class="contact__inner">
+
+          <div class="contact__info">
+            <div class="contact__map">
+              <iframe
+                src="https://maps.google.com/maps?q=San+Francisco,+CA&amp;z=11&amp;output=embed"
+                title="Map of San Francisco, California"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+            </div>
+
+            <ul class="contact__details">
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Phone</span>
+                  <a class="contact-detail__value" href="tel:+14155550123">(415) 555-0123</a>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Email</span>
+                  <a class="contact-detail__value" href="mailto:hello@thetransactionclub.com">hello@thetransactionclub.com</a>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Location</span>
+                  <span class="contact-detail__value">San Francisco, CA</span>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Office Hours</span>
+                  <span class="contact-detail__value">Mon – Fri: 9:00 AM – 6:00 PM</span>
+                  <span class="contact-detail__value">Sat: By appointment</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <h3 class="contact-card__title">Send us a message</h3>
+            <p class="contact-card__text">Tell us about your file and we'll get back to you within one business day.</p>
+
+            <form class="contact-form" action="#" method="post">
+              <input type="hidden" name="_subject" value="New enquiry from the Transaction Club website">
+              <!-- Honeypot: hidden from people, filled in by bots -->
+              <input class="visually-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div class="form-field">
+                <label class="form-field__label" for="contact-first">First name</label>
+                <input class="form-field__input" id="contact-first" name="first_name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-last">Last name</label>
+                <input class="form-field__input" id="contact-last" name="last_name" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-email">Email</label>
+                <input class="form-field__input" id="contact-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-phone">Phone</label>
+                <input class="form-field__input" id="contact-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="form-field contact-form__wide">
+                <label class="form-field__label" for="contact-service">Service you're interested in</label>
+                <select class="form-field__input form-field__select" id="contact-service" name="service" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option>File Management</option>
+                  <option>Deadline Tracking</option>
+                  <option>Signature Coordination</option>
+                  <option>General Question</option>
+                </select>
+              </div>
+              <div class="form-field contact-form__wide">
+                <label class="form-field__label" for="contact-message">Message <span class="form-field__optional">(optional)</span></label>
+                <textarea class="form-field__input form-field__textarea" id="contact-message" name="message" rows="4"></textarea>
+              </div>
+              <button class="btn btn--primary contact-form__submit contact-form__wide" type="submit">Send Message</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER — brand + blurb, page links, services, contact details, and a
+       bottom bar. No newsletter signup (the client isn't running one).
+       PLACEHOLDERS: phone, email and hours match the Contact section and
+       must be replaced with the client's real details before launch.
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+
+        <div class="footer__brand">
+          <!-- TODO: swap the text wordmark for the logo SVG once received -->
+          <a class="footer__logo" href="index.html" aria-label="The Transaction Club, home">
+            <span class="header__logo-small">The</span>
+            <span class="header__logo-name">Transaction Club</span>
+          </a>
+          <p class="footer__blurb">
+            Transaction coordination for real estate agents. For 10 years we've managed the
+            files and chased the signatures, so you can get back to selling.
+          </p>
+          <a class="btn btn--light btn--badge footer__cta" href="#contact">
+            Start a File
+            <span class="btn__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+            </span>
+          </a>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-pages">
+          <h2 class="footer__heading" id="footer-pages">Quick Links</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Home</a></li>
+            <li><a class="footer__link" href="html/about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>About</a></li>
+            <li><a class="footer__link" href="html/process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Our Process</a></li>
+            <li><a class="footer__link" href="html/gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Gallery</a></li>
+            <li><a class="footer__link" href="html/contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-labelledby="footer-services">
+          <h2 class="footer__heading" id="footer-services">Services</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="html/process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>File Management</a></li>
+            <li><a class="footer__link" href="html/process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Deadline Tracking</a></li>
+            <li><a class="footer__link" href="html/process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Signature Coordination</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Get in Touch</h2>
+          <ul class="footer__contact">
+            <li><span class="footer__contact-label">Phone</span><a href="tel:+14155550123">(415) 555-0123</a></li>
+            <li><span class="footer__contact-label">Email</span><a href="mailto:hello@thetransactionclub.com">hello@thetransactionclub.com</a></li>
+            <li><span class="footer__contact-label">Location</span>San Francisco, CA</li>
+            <li><span class="footer__contact-label">Hours</span>Mon – Fri: 9:00 AM – 6:00 PM</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 The Transaction Club. All rights reserved.</p>
+        <p class="footer__credit">Site by <a href="https://www.migsflow.com" target="_blank" rel="noopener">MigsFlow</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top" data-to-top>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></svg>
+  </button>
+
+</body>
+</html>
