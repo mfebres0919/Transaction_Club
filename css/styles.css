@@ -781,6 +781,9 @@
    ========================================================================== */
 
 .testimonials {
+  /* Navy falling streaks behind the reviews (has-texture--streaks) */
+  --texture-color: var(--color-green);
+  --texture-opacity: 0.12;
   position: relative;
   /* Top padding clears the bubble divider hanging from the top edge */
   padding-block: calc(5rem + var(--divider-height)) 5rem;

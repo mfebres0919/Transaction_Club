@@ -311,7 +311,8 @@ select {
    --texture-color; --texture-opacity keeps them quiet behind the content.
    A second gradient mask fades them out at the top and bottom edges so they
    never stop abruptly against a divider.
-   Default: line art. --particles: slow drifting dots (animated SVG). */
+   Default: line art. --particles: slow drifting dots. --streaks: diagonal
+   falling streaks. (Both animated SVGs.) */
 .has-texture {
   position: relative;
   isolation: isolate;
@@ -320,6 +321,10 @@ select {
 
 .has-texture--particles {
   --texture-image: url('../images/svg-backgrounds/wobbling-particles.svg');
+}
+
+.has-texture--streaks {
+  --texture-image: url('../images/svg-backgrounds/raining-streaks.svg');
 }
 
 .has-texture::before {
