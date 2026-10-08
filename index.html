@@ -442,14 +442,24 @@
 
 
     <!-- ========================================================================
-         TESTIMONIALS — scrolling wall of Google reviews + photo with a Google
-         card. PLACEHOLDER REVIEWS: every quote, name and role below is made up
+         TESTIMONIALS — Bay Bridge photo background, centred scrolling wall of
+         Google reviews, and a link to the Google profile underneath. PLACEHOLDER REVIEWS: every quote, name and role below is made up
          and MUST be replaced with real Google reviews before launch. TODO: once the Google Business Profile exists, swap every
          href="#testimonials" below for the profile's reviews URL.
          ======================================================================== -->
     <section class="testimonials has-texture has-texture--streaks" id="testimonials" aria-labelledby="testimonials-title">
       <!-- Bubble divider: the Services green flowing down into this section -->
       <div class="section-divider section-divider--top section-divider--bubble" aria-hidden="true"></div>
+
+      <!-- Bay Bridge background. The source is only 668x459, so it is served at
+           native size and stretched to cover; the heavy navy wash hides the
+           softness. Swap in a larger original if one exists. -->
+      <div class="testimonials__bg" aria-hidden="true">
+        <picture>
+          <source srcset="images/home/testimonials-bg.webp" type="image/webp">
+          <img src="images/home/testimonials-bg.jpg" alt="" width="668" height="459" loading="lazy" decoding="async">
+        </picture>
+      </div>
 
       <div class="container">
 
@@ -826,26 +836,12 @@
           </div>
           </div>
 
-          <div class="testimonials__media">
-            <!-- Source is only 668x459, so it is served at its cropped native size
-                 (510x459, no upscaling). Swap in a larger original if one exists. -->
-            <div class="testimonials__photo">
-              <picture>
-                <source srcset="images/home/testimonials-bridge.webp" type="image/webp">
-                <img src="images/home/testimonials-bridge.jpg" alt="The San Francisco–Oakland Bay Bridge and city skyline at sunset" width="510" height="459" loading="lazy" decoding="async">
-              </picture>
-            </div>
-
-            <a class="google-card" href="#testimonials">
-              <span class="google-card__top">
-                <span class="google-card__logo"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg></span>
-                <span class="google-card__title">Google Reviews</span>
-              </span>
-              <span class="google-card__text">See what agents say about The Transaction Club</span>
-              <span class="google-card__cta">
-                Read our reviews
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
-              </span>
+          <div class="testimonials__google">
+            <p>Want to read more? See every review on our Google profile.</p>
+            <a class="btn btn--light testimonials__google-link" href="#testimonials">
+              <span class="testimonials__google-icon"><svg class="google-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81Z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.92l-3.88-3c-1.07.72-2.45 1.15-4.06 1.15-3.12 0-5.77-2.11-6.71-4.95H1.28v3.1A12 12 0 0 0 12 24Z"/><path fill="#FBBC05" d="M5.29 14.28A7.2 7.2 0 0 1 4.91 12c0-.79.14-1.56.38-2.28v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.38l4.01-3.1Z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.28 6.62l4.01 3.1C6.23 6.88 8.88 4.77 12 4.77Z"/></svg></span>
+              Read our Google reviews
+              <svg class="testimonials__google-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
             </a>
           </div>
 
@@ -862,9 +858,6 @@
          Copy is a stand-in drafted from the discovery call.
          ======================================================================== -->
     <section class="process" aria-labelledby="process-title">
-      <!-- Arc divider: the Testimonials colour hanging down into the green -->
-      <div class="section-divider section-divider--top section-divider--arc" aria-hidden="true"></div>
-
       <div class="process__photo process__photo--main">
         <picture>
           <source media="(max-width: 1023px)" srcset="images/home/process-desk-m.webp" type="image/webp" width="720" height="540">
@@ -1030,12 +1023,12 @@
           </h2>
           <div class="final-cta__actions">
             <a class="btn btn--light btn--badge" href="#contact">
-              Start a File With Us
+              Get Started
               <span class="btn__badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
               </span>
             </a>
-            <a class="btn btn--outline-light" href="#contact">Ask Us a Question</a>
+            <a class="btn btn--outline-light" href="#closing-gift">Claim Your Gift</a>
           </div>
         </div>
       </div>

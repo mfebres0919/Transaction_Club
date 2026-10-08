@@ -781,7 +781,8 @@
    ========================================================================== */
 
 .testimonials {
-  /* Navy falling streaks behind the reviews (has-texture--streaks) */
+  /* Navy falling streaks (has-texture--streaks): they show on the pale top
+     and melt into the navy foot */
   --texture-color: var(--color-green);
   --texture-opacity: 0.12;
   position: relative;
@@ -804,13 +805,80 @@
 .testimonials__intro {
   margin-top: 1.25rem;
   font-size: 1.0625rem;
-  color: var(--color-muted);
+  /* Deep navy, not the usual grey: the grey is too faint on the blue wash */
+  color: var(--color-green-dark);
+}
+
+/* Eyebrow in deep navy too, so it holds up on the darker blue */
+.testimonials .eyebrow {
+  color: var(--color-green-dark);
+}
+
+/* ---------- Background photo ---------- */
+
+.testimonials__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.testimonials__bg picture,
+.testimonials__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pale sky-blue wash behind the heading (a break from the navy Services
+   above, with the bridge just showing through), deepening to solid navy at
+   the foot so the section flows straight into Process */
+.testimonials__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(162, 197, 232, 0.92) 0%,
+    rgba(151, 170, 190, 0.86) 38%,
+    rgba(19, 36, 61, 0.88) 78%,
+    var(--color-green-dark) 100%);
+}
+
+/* ---------- Google link ---------- */
+
+.testimonials__google {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonials__google-link {
+  gap: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+/* White disc so the four-colour G reads on the tan button */
+.testimonials__google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--color-white);
+}
+
+.testimonials__google-arrow {
+  width: 1rem;
+  height: 1rem;
 }
 
 .testimonials__inner {
-  display: grid;
-  gap: 3.5rem;
-  margin-top: 3.5rem;
+  max-width: 64rem;
+  margin: 3rem auto 0;
 }
 
 /* ---------- Review wall ---------- */
@@ -970,117 +1038,13 @@
   }
 }
 
-/* ---------- Photo + Google card ---------- */
-
-.testimonials__media {
-  position: relative;
-  padding-bottom: 4.5rem;
-}
-
-.testimonials__photo {
-  overflow: hidden;
-  aspect-ratio: 10 / 9;
-  border-radius: 1.75rem 6rem 1.75rem 1.75rem;
-  background-color: var(--color-tan);
-}
-
-.testimonials__photo picture,
-.testimonials__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Overlaps the photo's bottom edge; the page-colour border cuts it out */
-.google-card {
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  border: 0.5rem solid var(--color-tan-light);
-  border-radius: 1.75rem;
-  background-color: var(--color-green);
-  color: var(--color-white);
-  transition: transform var(--transition);
-}
-
-.google-card:hover {
-  transform: translateY(-0.25rem);
-}
-
-.google-card__top {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* White disc so the four-colour G reads on the green */
-.google-card__logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background-color: var(--color-white);
-}
-
-.google-card__logo .google-g {
-  width: 1.375rem;
-  height: 1.375rem;
-}
-
-.google-card__title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.google-card__text {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.google-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 0.25rem;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  color: var(--color-tan);
-}
-
-.google-card__cta svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-@media (min-width: 768px) {
-  .testimonials__media {
-    max-width: 34rem;
-  }
-
-  .google-card {
-    right: auto;
-    left: -1.5rem;
-    max-width: 22rem;
-  }
-}
-
 @media (min-width: 1024px) {
   .testimonials {
     padding-block: calc(7.5rem + var(--divider-height)) 7.5rem;
   }
 
   .testimonials__inner {
-    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 4rem;
-    margin-top: 4.5rem;
+    margin-top: 4rem;
   }
 
   .review-wall {
@@ -1096,14 +1060,7 @@
     padding: 1.25rem;
   }
 
-  .testimonials__media {
-    justify-self: end;
-    width: 100%;
-  }
 
-  .google-card {
-    left: -3rem;
-  }
 }
 
 
@@ -1117,8 +1074,7 @@
 
 .process {
   position: relative;
-  /* Top padding clears the arc divider hanging from the top edge */
-  padding-block: calc(5rem + var(--divider-height)) 5rem;
+  padding-block: 5rem;
   overflow: hidden;
   color: var(--color-white);
   background-color: var(--color-green-dark);
@@ -1329,7 +1285,7 @@
 
 @media (min-width: 1024px) {
   .process {
-    padding-block: calc(7.5rem + var(--divider-height)) 6rem;
+    padding-block: 7.5rem 6rem;
   }
 
   .process__intro {
@@ -1369,8 +1325,7 @@
   .process__photo--inset {
     display: block;
     position: absolute;
-    /* Starts where the arc divider ends, so the arc never covers it */
-    top: var(--divider-height);
+    top: 0;
     right: 0;
     width: 16%;
     aspect-ratio: 1.45;
