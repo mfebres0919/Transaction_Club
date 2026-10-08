@@ -241,7 +241,8 @@
    ========================================================================== */
 
 .about {
-  padding-block: 5rem;
+  /* Shorter at the foot: the stats strip follows closely */
+  padding-block: 5rem 2.5rem;
   background-color: var(--color-tan-light);
 }
 
@@ -388,7 +389,7 @@
 
 @media (min-width: 1024px) {
   .about {
-    padding-block: 7.5rem;
+    padding-block: 7.5rem 3.5rem;
   }
 
   .about__inner {
@@ -653,6 +654,8 @@
 
 .stats {
   position: relative;
+  /* A shallower arc than elsewhere, so About and the strip sit close */
+  --divider-height: clamp(2rem, 4vw, 3.5rem);
   /* Clears the arc divider hanging from the top edge */
   padding-top: var(--divider-height);
   background-color: var(--color-white);
@@ -662,7 +665,7 @@
 /* The strip flows straight into the white bubble divider at the top of
    Services, and the arc divider above separates it from About */
 .stats__frame {
-  padding-block: 2.5rem;
+  padding-block: 1.5rem 2.5rem;
 }
 
 /* Soft fade at both edges so items drift in and out rather than clip */
@@ -762,7 +765,7 @@
 
 @media (min-width: 1024px) {
   .stats__frame {
-    padding-block: 3.5rem;
+    padding-block: 2rem 3.5rem;
   }
 
   .stat {
