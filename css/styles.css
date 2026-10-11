@@ -123,7 +123,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .hero__title {
@@ -139,7 +139,7 @@
   font-size: 0.95em;
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .hero__text {
@@ -163,7 +163,7 @@
   max-width: 30rem;
   padding: 1.75rem 1.5rem;
   border-radius: calc(var(--radius) * 2);
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
   color: var(--color-ink);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
 }
@@ -288,7 +288,7 @@
 .about {
   /* Shorter at the foot: the stats strip follows closely */
   padding-block: 5rem 2.5rem;
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
 }
 
 .about__inner {
@@ -310,7 +310,7 @@
   overflow: hidden;
   border-radius: 1.75rem;
   /* Shows while a photo is still loading */
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
 }
 
 .about__photo--main {
@@ -326,7 +326,7 @@
   bottom: 0;
   width: 66%;
   height: 54%;
-  border: 0.5rem solid var(--color-tan-light);
+  border: 0.5rem solid var(--color-white-bg);
   border-radius: 2rem;
 }
 
@@ -349,7 +349,7 @@
   transform: translateX(-50%);
   border-radius: 50%;
   background-color: var(--color-green);
-  box-shadow: 0 0 0 0.375rem var(--color-tan-light);
+  box-shadow: 0 0 0 0.375rem var(--color-white-bg);
 }
 
 .about__badge-ring {
@@ -379,7 +379,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
   color: var(--color-green);
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 5vw, 1.875rem);
@@ -391,7 +391,7 @@
 
 .about__spark {
   position: absolute;
-  fill: var(--color-tan-dark);
+  fill: var(--color-blue-dark);
   pointer-events: none;
 }
 
@@ -458,8 +458,8 @@
 
 .services {
   --services-overlap: 9rem;
-  /* Tan drifting particles over the green (has-texture--particles) */
-  --texture-color: var(--color-tan);
+  /* Blue drifting particles over the green (has-texture--particles) */
+  --texture-color: var(--color-blue);
   --texture-opacity: 0.35;
   color: var(--color-white);
   background-color: var(--color-green-dark);
@@ -482,12 +482,12 @@
 /* Header colours flipped for the dark band */
 .services__top .eyebrow,
 .services__top .section-title__accent {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
-/* A green button would vanish on green, so it turns tan here */
+/* A green button would vanish on green, so it turns blue here */
 .services__top .btn--primary {
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   color: var(--color-ink);
 }
 
@@ -566,7 +566,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Tan tile with a green icon; flips to green with a tan icon on hover */
+/* Blue tile with a green icon; flips to green with a blue icon on hover */
 .service-card__icon {
   display: inline-flex;
   align-items: center;
@@ -575,7 +575,7 @@
   height: 3.25rem;
   flex: none;
   border-radius: 0.875rem;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   color: var(--color-green);
   transition: background-color var(--transition), color var(--transition);
 }
@@ -588,7 +588,7 @@
 .service-card:hover .service-card__icon,
 .service-card:focus-within .service-card__icon {
   background-color: var(--color-green);
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .service-card__title {
@@ -611,14 +611,14 @@
 }
 
 .service-card:focus-within {
-  outline: 2px solid var(--color-tan-dark);
+  outline: 2px solid var(--color-blue-dark);
   outline-offset: 3px;
 }
 
 .service-card__arrow {
   display: inline-flex;
   flex: none;
-  color: var(--color-tan-dark);
+  color: var(--color-blue-dark);
   transition: color var(--transition), transform var(--transition);
 }
 
@@ -645,7 +645,7 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 1.25rem;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
 }
 
 .service-card__photo picture,
@@ -748,7 +748,7 @@
   height: 3rem;
   flex: none;
   border-radius: 0.875rem;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   color: var(--color-green);
 }
 
@@ -836,7 +836,7 @@
   position: relative;
   /* Top padding clears the bubble divider hanging from the top edge */
   padding-block: calc(5rem + var(--divider-height)) 5rem;
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
 }
 
 /* Bubble divider: the Services green flowing down into this section */
@@ -908,7 +908,7 @@
   padding-left: 0.5rem;
 }
 
-/* White disc so the four-colour G reads on the tan button */
+/* White disc so the four-colour G reads on the blue button */
 .testimonials__google-icon {
   display: inline-flex;
   align-items: center;
@@ -983,7 +983,7 @@
 }
 
 .review-card__google:hover {
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
 }
 
 .review-card__quote {
@@ -1017,7 +1017,7 @@
   flex: none;
   border-radius: 50%;
   background-color: var(--color-green);
-  color: var(--color-tan);
+  color: var(--color-blue);
   font-family: var(--font-heading);
   font-size: 0.875rem;
   font-weight: 600;
@@ -1129,11 +1129,11 @@
 }
 
 .process .eyebrow {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .process .section-title__accent {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .process__intro {
@@ -1248,7 +1248,7 @@
   font-size: 3rem;
   font-weight: 600;
   line-height: 1;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .process-card__title {
@@ -1315,8 +1315,8 @@
 }
 
 .process__arrow:hover {
-  border-color: var(--color-tan);
-  background-color: var(--color-tan);
+  border-color: var(--color-blue);
+  background-color: var(--color-blue);
   color: var(--color-green-dark);
 }
 
@@ -1387,150 +1387,6 @@
 
 
 /* ==========================================================================
-   FINAL CTA
-   The section is split: dark green on top (continuing Process) and cream
-   below (where Contact will sit). The rounded photo banner is inset from
-   the screen edges by --gutter and straddles that split.
-   ========================================================================== */
-
-.final-cta {
-  position: relative;
-  padding: 0 var(--gutter) 5rem;
-  background: linear-gradient(180deg, var(--color-green-dark) 50%, var(--color-tan-light) 50%);
-}
-
-.final-cta__banner {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 82rem;
-  min-height: 34rem;
-  margin-inline: auto;
-  padding: 4rem 1.5rem;
-  overflow: hidden;
-  border-radius: 1.75rem;
-  text-align: center;
-  color: var(--color-white);
-  background-color: var(--color-green);
-  box-shadow: 0 30px 60px rgba(19, 36, 61, 0.25);
-}
-
-.final-cta__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-}
-
-.final-cta__bg picture,
-.final-cta__bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Green wash, the same treatment as the hero, so the white copy reads */
-.final-cta__banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(19, 36, 61, 0.78) 0%, rgba(19, 36, 61, 0.6) 100%);
-}
-
-.final-cta__content {
-  max-width: 44rem;
-}
-
-.final-cta .eyebrow {
-  color: var(--color-tan);
-}
-
-.final-cta__title {
-  margin-top: 1rem;
-  font-size: clamp(2rem, 4vw + 0.75rem, 3.5rem);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-/* Script line, matching "We handle the file." in the hero */
-.final-cta__title-accent {
-  display: block;
-  margin-top: 0.25em;
-  font-family: var(--font-script);
-  font-size: 0.9em;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--color-tan);
-}
-
-.final-cta__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2.25rem;
-}
-
-/* Badge reads green on the tan button */
-.final-cta .btn--light .btn__badge {
-  background-color: var(--color-green);
-  color: var(--color-white);
-}
-
-/* Decorative sparkles just outside the banner */
-.final-cta__spark {
-  position: absolute;
-  z-index: 1;
-  display: none;
-  pointer-events: none;
-}
-
-.final-cta__spark svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--color-tan);
-}
-
-@media (min-width: 768px) {
-  .final-cta__banner {
-    min-height: 30rem;
-    padding: 5rem 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .final-cta {
-    padding: 0 2.5rem 7rem;
-  }
-
-  .final-cta__spark {
-    display: block;
-  }
-
-  .final-cta__spark--a {
-    top: 1.5rem;
-    left: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    opacity: 0.7;
-  }
-
-  .final-cta__spark--b {
-    right: 0.75rem;
-    bottom: 32%;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  .final-cta__spark--b svg {
-    fill: var(--color-green);
-  }
-}
-
-
-/* ==========================================================================
    SWIPE HINT — tells touch users a row scrolls sideways. Shown only where the
    row is a swipe row (services below 960px, process below 1024px). The hand
    nudges sideways twice, then rests.
@@ -1553,11 +1409,11 @@
 
 .services .swipe-hint {
   justify-content: center;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .process .swipe-hint {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 @media (max-width: 959px) {

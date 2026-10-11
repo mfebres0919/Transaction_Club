@@ -1,6 +1,7 @@
 /* ==========================================================================
-   ABOUT PAGE — How It Works accordion
-   Native <details> snap open and shut; this slides each panel down and up
+   ACCORDIONS — About (How It Works) and Our Process (FAQ)
+   Any <details class="accordion__item"> with .accordion__summary and
+   .accordion__body. Native <details> snap open and shut; this slides each panel down and up
    instead, in every browser. One panel open at a time: opening one slides
    the open one shut. Clicking again mid-slide reverses from where it is.
    Without JavaScript the panels still work (they just snap), and the shared

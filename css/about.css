@@ -38,7 +38,7 @@
 
 /* Arc divider: the About section's cream hanging down into the sky */
 .how .section-divider {
-  --divider-color: var(--color-tan-light);
+  --divider-color: var(--color-white-bg);
 }
 
 .how__inner {
@@ -156,10 +156,10 @@
    ========================================================================== */
 
 .why {
-  --texture-opacity: 0.08;
+  --texture-opacity: 0.12;
   /* Top padding clears the bubble divider hanging from the top edge */
   padding-block: calc(5rem + var(--divider-height)) 5rem;
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
 }
 
 /* Bubble divider: How It Works' sky flowing down into the cream */
@@ -203,7 +203,7 @@
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   color: var(--color-green);
 }
 
@@ -249,7 +249,7 @@
   justify-content: center;
   width: 52%;
   padding: 1.75rem 1rem;
-  border: solid var(--color-tan-light);
+  border: solid var(--color-white-bg);
   border-width: 0.625rem 0.625rem 0 0;
   /* Bottom-left matches the photo's corner; top-right curves the cut-out */
   border-radius: 0 2.25rem 0 2rem;
@@ -331,7 +331,7 @@
 
 /* Arc divider: the Why Choose Us cream hanging down over the photo */
 .steps-section .section-divider {
-  --divider-color: var(--color-tan-light);
+  --divider-color: var(--color-white-bg);
 }
 
 .steps-section__bg {
@@ -360,7 +360,7 @@
 
 .steps-section .eyebrow,
 .steps-section .section-title__accent {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .steps-section__head {
@@ -393,13 +393,60 @@
   margin-inline: auto;
   border-radius: 1.5rem;
   color: var(--color-green);
+  isolation: isolate;
+  transition: transform 0.5s ease;
+}
+
+/* The tile is its own layer so it can flip without taking the number badge
+   with it */
+.step__icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
   background-color: var(--color-white);
   box-shadow: 0 0 0 0.5rem rgba(255, 255, 255, 0.15);
+  transition: transform 0.6s ease-in-out, background-color 0s linear 0.3s;
 }
 
 .step__icon svg {
   width: 2.75rem;
   height: 2.75rem;
+  transition: transform 0.6s ease-in-out, color 0s linear 0.3s;
+}
+
+/* Hover: the tile lifts and flips over, turning navy with a baby-blue icon.
+   The colours switch at the halfway point, when the tile is edge-on. */
+@media (hover: hover) {
+  .step:hover .step__icon {
+    transform: translateY(-0.5rem);
+  }
+
+  .step:hover .step__icon::before {
+    transform: perspective(40rem) rotateY(180deg);
+    background-color: var(--color-green);
+  }
+
+  .step:hover .step__icon svg {
+    transform: perspective(40rem) rotateY(360deg);
+    color: var(--color-blue);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step__icon,
+  .step__icon::before,
+  .step__icon svg {
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+
+  .step:hover .step__icon,
+  .step:hover .step__icon::before,
+  .step:hover .step__icon svg {
+    transform: none;
+  }
 }
 
 .step__number {
@@ -416,7 +463,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--color-green-dark);
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
 }
 
 .step__title {
@@ -458,7 +505,7 @@
     width: 3.5rem;
     height: 1.5rem;
     transform: translate(-50%, -50%);
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' fill='none' stroke='%23ede4d6' stroke-opacity='0.6' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='2' y1='12' x2='54' y2='12'/%3E%3Cpolyline points='44 3 54 12 44 21'/%3E%3C/svg%3E") center / contain no-repeat;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' fill='none' stroke='%23dcebf8' stroke-opacity='0.6' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='2' y1='12' x2='54' y2='12'/%3E%3Cpolyline points='44 3 54 12 44 21'/%3E%3C/svg%3E") center / contain no-repeat;
     pointer-events: none;
   }
 }

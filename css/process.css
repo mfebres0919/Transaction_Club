@@ -1,0 +1,537 @@
+/* ==========================================================================
+   OUR PROCESS PAGE (html/process.html)
+   Shared pieces (tokens, header, page hero, buttons, footer) live in
+   global.css; this file holds the page's own sections.
+   ========================================================================== */
+
+/* ==========================================================================
+   PROCESS CARDS
+   Default (no JavaScript, reduced motion): four cards in a row, stacking to
+   one column on small screens.
+   .is-swiping (phones/tablets, process.js): a horizontal snap scroller;
+   process.js tilts each card in 3D by its distance from the centre.
+   .is-stacking (1024px+, process.js): the track is tall and the inner
+   block sticks under the header; process.js positions each card absolutely
+   (left, width, transform) from the scroll position.
+   ========================================================================== */
+
+.process-cards {
+  padding-block: 5rem;
+  background-color: var(--color-white-bg);
+}
+
+/* Navy star dust drifting behind the cards (has-texture--particles) */
+.process-cards__sticky {
+  --texture-color: var(--color-green);
+  --texture-opacity: 0.5;
+}
+
+.process-cards__head {
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.process-cards__head .eyebrow {
+  justify-content: center;
+}
+
+.process-cards__list {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .process-cards__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-cards__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- One card ---------- */
+
+.process-card {
+  --card-bg: var(--color-blue);
+  --card-ink: var(--color-ink);
+  --card-soft: var(--color-muted);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 26rem;
+  padding: 2.25rem 2.25rem 2.5rem;
+  overflow: hidden;
+  border-radius: calc(var(--radius) * 3);
+  background-color: var(--card-bg);
+  color: var(--card-ink);
+  box-shadow: 0 24px 50px rgba(19, 36, 61, 0.18);
+}
+
+/* Light, navy, mid blue, deep navy: each card reads as its own layer */
+.process-card--2 {
+  --card-bg: var(--color-green);
+  --card-ink: var(--color-white);
+  --card-soft: rgba(255, 255, 255, 0.78);
+}
+
+.process-card--3 {
+  --card-bg: #a9c4de;
+  --card-soft: #2f3b49;
+}
+
+.process-card--4 {
+  --card-bg: var(--color-green-dark);
+  --card-ink: var(--color-white);
+  --card-soft: rgba(255, 255, 255, 0.78);
+}
+
+.process-card__number {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.process-card__body {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 26rem;
+}
+
+/* Icon sits beside the title */
+.process-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.process-card__icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.process-card__title {
+  font-size: 1.375rem;
+}
+
+/* Photo slot: after the title by default */
+.process-card__photo {
+  aspect-ratio: 16 / 10;
+  margin-block: 0.25rem;
+  border-radius: calc(var(--radius) * 2);
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.process-card--1 .process-card__photo,
+.process-card--3 .process-card__photo {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.process-card__text {
+  color: var(--card-soft);
+}
+
+.process-card__list {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  color: var(--card-soft);
+}
+
+.process-card__item {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.process-card__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+/* ---------- Mobile / tablet: swipeable 3D row ---------- */
+
+.process-cards.is-swiping .process-cards__list {
+  display: flex;
+  gap: 0.75rem;
+  /* Run edge to edge, with the first and last card able to centre */
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 1.5rem 13vw 2.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  perspective: 1000px;
+}
+
+.process-cards.is-swiping .process-cards__list::-webkit-scrollbar {
+  display: none;
+}
+
+.process-cards.is-swiping .process-card {
+  flex: 0 0 74vw;
+  max-width: 22rem;
+  scroll-snap-align: center;
+  will-change: transform;
+}
+
+/* ---------- Desktop: pinned 3D stack ---------- */
+
+/* clip (not hidden) keeps tilted cards from causing sideways scroll without
+   breaking the sticky pin; the bottom padding lets the spread cards and
+   their shadows ease out before the FAQ */
+.process-cards.is-stacking {
+  padding-block: 0 2rem;
+  overflow-x: clip;
+}
+
+/* Scroll length of the effect: about one screen per card, plus the spread */
+.process-cards.is-stacking .process-cards__track {
+  height: 600vh;
+}
+
+.process-cards.is-stacking .process-cards__sticky {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  align-items: center;
+  height: calc(100vh - var(--header-height));
+}
+
+.process-cards.is-stacking .process-cards__sticky > .container {
+  width: 100%;
+}
+
+.process-cards.is-stacking .process-cards__head {
+  margin-bottom: 2rem;
+}
+
+/* Wider than the page column, so the four spread cards aren't cramped.
+   process.js sets --card-height to fit the tallest card, and scales the
+   row down on short screens (from the top, so it stays centred). */
+.process-cards.is-stacking .process-cards__list {
+  --row-width: min(calc(100vw - 4rem), 92rem);
+  display: block;
+  position: relative;
+  width: var(--row-width);
+  margin-left: calc((100% - var(--row-width)) / 2);
+  perspective: 1600px;
+  transform-origin: top center;
+}
+
+.process-cards.is-stacking .process-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--card-height, 100%);
+  min-height: 0;
+  will-change: transform, left, width;
+}
+
+/* Keep the text a steady width while a card resizes, so it doesn't reflow
+   on every frame of the spread */
+.process-cards.is-stacking .process-card__body {
+  width: min(22rem, 100%);
+}
+
+/* Desktop stack: the photo runs down the right side of the wide card, beside
+   the text. As the cards spread (--spread, 0 → 1, from process.js) it slides
+   down to a full-width band along the bottom of each card, and the card's
+   bottom padding grows to make room for it. */
+.process-cards.is-stacking .process-card {
+  padding-bottom: calc(2.5rem + var(--spread, 0) * (var(--photo-height, 9rem) + 1.5rem));
+}
+
+.process-cards.is-stacking .process-card__photo {
+  position: absolute;
+  right: 2.25rem;
+  bottom: 2.5rem;
+  top: calc(2.25rem + var(--spread, 0) * (100% - 4.75rem - var(--photo-height, 9rem)));
+  width: calc((1 - var(--spread, 0)) * max(0px, 100% - 22rem - 6.5rem) + var(--spread, 0) * (100% - 4.5rem));
+  aspect-ratio: auto;
+  margin: 0;
+  opacity: var(--photo-fade, 1);
+}
+
+/* The cards are a little shorter here, so pinned screens fit them */
+.process-cards.is-stacking .process-card {
+  gap: 1.5rem;
+}
+
+.process-cards.is-stacking .process-card__number {
+  font-size: 3rem;
+}
+
+/* Laptop-height screens: a tighter heading and cards so the row fits at
+   full size */
+@media (max-height: 860px) {
+  .process-cards.is-stacking .process-cards__head {
+    margin-bottom: 1.5rem;
+  }
+
+  .process-cards.is-stacking .section-title {
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  }
+
+  .process-cards.is-stacking .process-card {
+    gap: 1rem;
+    padding: 1.75rem 1.75rem calc(2rem + var(--spread, 0) * (var(--photo-height, 9rem) + 1.25rem));
+  }
+
+  .process-cards.is-stacking .process-card__number {
+    font-size: 2.5rem;
+  }
+
+  .process-cards.is-stacking .process-card__photo {
+    right: 1.75rem;
+    bottom: 2rem;
+    top: calc(1.75rem + var(--spread, 0) * (100% - 3.75rem - var(--photo-height, 9rem)));
+    width: calc((1 - var(--spread, 0)) * max(0px, 100% - 22rem - 5.5rem) + var(--spread, 0) * (100% - 3.5rem));
+  }
+}
+
+
+/* ==========================================================================
+   FAQ
+   Left: a faint "FAQs" behind the heading, intro, a photo with the "Still
+   have questions?" card overlapping its foot. Right: the questions, which
+   open and close smoothly (javascript/accordion.js); one open at a time.
+   Mobile: everything in one column, questions after the intro.
+   ========================================================================== */
+
+.faq {
+  padding-block: 5rem 6rem;
+  background-color: var(--color-white-bg);
+  overflow: hidden;
+}
+
+.faq__inner {
+  display: grid;
+  gap: 3rem;
+}
+
+.faq__intro {
+  position: relative;
+}
+
+/* Oversized word watermark behind the eyebrow and heading */
+.faq__watermark {
+  position: absolute;
+  top: -2.25rem;
+  left: -0.5rem;
+  z-index: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 16vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-green);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.faq__intro > :not(.faq__watermark) {
+  position: relative;
+}
+
+.faq__text {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  color: var(--color-muted);
+}
+
+/* Photo with the help card overlapping its bottom edge */
+.faq__media {
+  margin-top: 2.5rem;
+}
+
+.faq__photo {
+  aspect-ratio: 16 / 10;
+  border-radius: calc(var(--radius) * 3);
+}
+
+.faq__help {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  margin: -3.5rem 1rem 0;
+  padding: 1.5rem;
+  border-radius: calc(var(--radius) * 3);
+  background-color: var(--color-sky);
+  box-shadow: 0 20px 40px rgba(19, 36, 61, 0.12);
+}
+
+.faq__help-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.faq__help-icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.faq__help-title {
+  font-size: 1.125rem;
+}
+
+.faq__help-text {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+}
+
+.faq__help .btn {
+  grid-column: 1 / -1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ---------- Questions ---------- */
+
+.faq__list {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.faq .accordion__item {
+  overflow: hidden; /* rounds the navy question bar's corners */
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) * 2);
+  background-color: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.faq .accordion__item[open] {
+  border-color: var(--color-green);
+  box-shadow: 0 14px 30px rgba(19, 36, 61, 0.1);
+}
+
+.faq .accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq .accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq .accordion__summary {
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.faq .accordion__summary:hover {
+  color: var(--color-green);
+}
+
+/* Open: the question bar turns navy with white text; the answer stays white */
+.faq .accordion__item[open]:not(.is-closing) .accordion__summary {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+/* Plus that turns into a minus while open */
+.faq .accordion__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.faq .accordion__icon::before,
+.faq .accordion__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform var(--transition);
+}
+
+.faq .accordion__icon::after {
+  transform: rotate(90deg);
+}
+
+.faq .accordion__item[open]:not(.is-closing) .accordion__icon::after {
+  transform: rotate(0deg);
+}
+
+.faq .accordion__body {
+  overflow: hidden;
+}
+
+.faq .accordion__body > p {
+  padding: 1.25rem 1.5rem 1.375rem;
+  color: var(--color-muted);
+}
+
+@media (min-width: 1024px) {
+  .faq {
+    padding-block: 7rem;
+  }
+
+  .faq__inner {
+    grid-template-columns: 5fr 6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .faq__watermark {
+    top: -3.5rem;
+  }
+
+  .faq__help {
+    margin-inline: 1.5rem;
+    padding: 1.75rem;
+  }
+
+  .faq .accordion__summary {
+    padding: 1.5rem 1.75rem;
+    font-size: 1.125rem;
+  }
+
+  .faq .accordion__body > p {
+    padding: 1.25rem 1.75rem 1.5rem;
+  }
+}

@@ -59,21 +59,21 @@
 
 
 /* ==========================================================================
-   DESIGN TOKENS — palette is a first draft (light tan, black/white, dark green)
+   DESIGN TOKENS — palette is a first draft (white, baby blue, navy)
    ========================================================================== */
 
 :root {
   /* Colors */
-  --color-tan: #ede4d6;
-  --color-tan-light: #fffdfa;
+  --color-blue: #dcebf8; /* baby blue accents (was tan #ede4d6) */
+  --color-white-bg: #ffffff; /* page and card background (was cream #fffdfa) */
   --color-sky: #eaf1f8;
-  --color-tan-dark: #ebdecc;
+  --color-blue-dark: #c5dcf1; /* deeper baby blue (was tan #ebdecc) */
   --color-green: #1f3a5f; /* TRIAL: navy (was green #1e3b2f) */
   --color-green-dark: #13243d; /* TRIAL: deep navy (was #142a21) */
   --color-ink: #141414;
   --color-white: #ffffff;
-  --color-muted: #5a5750;
-  --color-border: #ddd3c3;
+  --color-muted: #56606c;
+  --color-border: #d5e0eb;
 
   /* Type */
   --font-heading: 'Poppins', 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -129,7 +129,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-ink);
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -177,7 +177,7 @@ select {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-tan-dark);
+  outline: 2px solid var(--color-blue-dark);
   outline-offset: 3px;
 }
 
@@ -313,7 +313,8 @@ select {
    A second gradient mask fades them out at the top and bottom edges so they
    never stop abruptly against a divider.
    Default: line art. --particles: slow drifting dots. --streaks: diagonal
-   falling streaks. (Both animated SVGs.) */
+   falling streaks. (Both animated SVGs.) --pointers: layered triangles
+   pointing in from the left and right edges. */
 .has-texture {
   position: relative;
   isolation: isolate;
@@ -326,6 +327,10 @@ select {
 
 .has-texture--streaks {
   --texture-image: url('../images/svg-backgrounds/raining-streaks.svg');
+}
+
+.has-texture--pointers {
+  --texture-image: url('../images/svg-backgrounds/pointer-sandwich.svg');
 }
 
 .has-texture::before {
@@ -358,7 +363,7 @@ select {
   bottom: -1px; /* hides a hairline seam on some screens */
   z-index: 1;
   height: var(--divider-height);
-  background-color: var(--divider-color, var(--color-tan-light));
+  background-color: var(--divider-color, var(--color-white-bg));
   pointer-events: none;
   -webkit-mask: var(--divider-shape) center / 100% 100% no-repeat;
   mask: var(--divider-shape) center / 100% 100% no-repeat;
@@ -436,7 +441,7 @@ select {
 }
 
 .btn--light {
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   color: var(--color-ink);
 }
 
@@ -512,7 +517,7 @@ select {
 /* Example answers ("Ex: Jane Doe"): light enough to read as a hint, not a value */
 .form-field__input::placeholder,
 .form-field__textarea::placeholder {
-  color: #9a958c;
+  color: #94a0ad;
   opacity: 1;
 }
 
@@ -638,7 +643,7 @@ select {
   font-weight: 500;
 }
 
-/* Mobile panel: current page in green with a small tan marker */
+/* Mobile panel: current page in green with a small blue marker */
 .nav__link[aria-current='page'] {
   color: var(--color-green);
   font-weight: 600;
@@ -651,7 +656,7 @@ select {
   height: 0.5rem;
   margin-right: 0.625rem;
   border-radius: 50%;
-  background-color: var(--color-tan-dark);
+  background-color: var(--color-blue-dark);
   vertical-align: middle;
 }
 
@@ -733,7 +738,7 @@ select {
   }
 
   /* Current page sits in a pill; hover previews a fainter one.
-     Over the hero: frosted white pill. Once the header turns white: tan pill. */
+     Over the hero: frosted white pill. Once the header turns white: blue pill. */
   .nav__link[aria-current='page']::before {
     display: none;
   }
@@ -748,17 +753,17 @@ select {
   }
 
   .header.is-scrolled .nav__link:hover {
-    background-color: var(--color-tan-light);
+    background-color: var(--color-white-bg);
   }
 
   .header.is-scrolled .nav__link[aria-current='page'] {
     color: var(--color-green);
-    background-color: var(--color-tan);
+    background-color: var(--color-blue);
   }
 
-  /* CTA reads tan over photos, then green once the header turns white */
+  /* CTA reads blue over photos, then green once the header turns white */
   .header:not(.is-scrolled) .nav__cta {
-    background-color: var(--color-tan);
+    background-color: var(--color-blue);
     color: var(--color-ink);
   }
 
@@ -775,9 +780,9 @@ select {
 
 .photo-slot {
   overflow: hidden;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
   /* Faint image icon so the slot reads as "photo goes here" */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ddd3c3' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='9' cy='9' r='2'/%3E%3Cpath d='m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a9c4de' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='9' cy='9' r='2'/%3E%3Cpath d='m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21'/%3E%3C/svg%3E");
   background-position: center;
   background-size: 4rem;
   background-repeat: no-repeat;
@@ -848,7 +853,7 @@ select {
   font-size: 1.15em;
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 /* ---------- Breadcrumb ---------- */
@@ -888,7 +893,7 @@ select {
 }
 
 .breadcrumb [aria-current='page'] {
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 
@@ -901,7 +906,7 @@ select {
 
 .contact {
   padding-block: 1rem 5rem;
-  background-color: var(--color-tan-light);
+  background-color: var(--color-white-bg);
 }
 
 /* Contact page: straight under the page hero (no Final CTA above), so it
@@ -926,7 +931,7 @@ select {
   overflow: hidden;
   aspect-ratio: 4 / 3;
   border-radius: 1.5rem;
-  background-color: var(--color-tan);
+  background-color: var(--color-blue);
 }
 
 .contact__map iframe {
@@ -957,7 +962,7 @@ select {
   flex: none;
   border-radius: 50%;
   background-color: var(--color-green);
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .contact-detail__icon svg {
@@ -1075,7 +1080,7 @@ a.contact-detail__value:hover {
   width: 3.25rem;
   height: 3.25rem;
   padding: 0;
-  border: 2px solid var(--color-tan);
+  border: 2px solid var(--color-blue);
   border-radius: 50%;
   background-color: var(--color-green);
   color: var(--color-white);
@@ -1100,6 +1105,173 @@ a.contact-detail__value:hover {
 .to-top svg {
   width: 1.375rem;
   height: 1.375rem;
+}
+
+
+/* ==========================================================================
+   FINAL CTA (shared: home, About, Our Process)
+   The section is split: dark green on top (continuing Process) and cream
+   below (where Contact will sit). The rounded photo banner is inset from
+   the screen edges by --gutter and straddles that split.
+   --flipped: white on top, navy below, for pages where it sits between a
+   white section and the footer.
+   ========================================================================== */
+
+.final-cta {
+  position: relative;
+  padding: 0 var(--gutter) 5rem;
+  background: linear-gradient(180deg, var(--color-green-dark) 50%, var(--color-white-bg) 50%);
+}
+
+.final-cta__banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 82rem;
+  min-height: 34rem;
+  margin-inline: auto;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-green);
+  box-shadow: 0 30px 60px rgba(19, 36, 61, 0.25);
+}
+
+.final-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.final-cta__bg picture,
+.final-cta__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Green wash, the same treatment as the hero, so the white copy reads */
+.final-cta__banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(19, 36, 61, 0.78) 0%, rgba(19, 36, 61, 0.6) 100%);
+}
+
+.final-cta__content {
+  max-width: 44rem;
+}
+
+.final-cta .eyebrow {
+  color: var(--color-blue);
+}
+
+.final-cta__title {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4vw + 0.75rem, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Script line, matching "We handle the file." in the hero */
+.final-cta__title-accent {
+  display: block;
+  margin-top: 0.25em;
+  font-family: var(--font-script);
+  font-size: 0.9em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--color-blue);
+}
+
+.final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+/* Badge reads green on the blue button */
+.final-cta .btn--light .btn__badge {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+/* Decorative sparkles just outside the banner */
+.final-cta__spark {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  pointer-events: none;
+}
+
+.final-cta__spark svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-blue);
+}
+
+@media (min-width: 768px) {
+  .final-cta__banner {
+    min-height: 30rem;
+    padding: 5rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .final-cta {
+    padding: 0 2.5rem 7rem;
+  }
+
+  .final-cta__spark {
+    display: block;
+  }
+
+  .final-cta__spark--a {
+    top: 1.5rem;
+    left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.7;
+  }
+
+  .final-cta__spark--b {
+    right: 0.75rem;
+    bottom: 32%;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .final-cta__spark--b svg {
+    fill: var(--color-green);
+  }
+}
+
+.final-cta--flipped {
+  padding-bottom: 0;
+  background: linear-gradient(180deg, var(--color-white-bg) 50%, var(--color-green-dark) 50%);
+}
+
+/* Sparkle colours swap with the background: navy on the white top, blue on
+   the navy bottom */
+.final-cta--flipped .final-cta__spark--a svg {
+  fill: var(--color-green);
+}
+
+.final-cta--flipped .final-cta__spark--b svg {
+  fill: var(--color-blue);
+}
+
+@media (min-width: 1024px) {
+  .final-cta--flipped {
+    padding-bottom: 0;
+  }
 }
 
 
@@ -1139,7 +1311,7 @@ a.contact-detail__value:hover {
   margin-top: 1.75rem;
 }
 
-/* Badge reads green on the tan button */
+/* Badge reads green on the blue button */
 .footer__cta .btn__badge {
   background-color: var(--color-green);
   color: var(--color-white);
@@ -1168,7 +1340,7 @@ a.contact-detail__value:hover {
   width: 0.875rem;
   height: 0.875rem;
   flex: none;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .footer__link:hover {
@@ -1192,7 +1364,7 @@ a.contact-detail__value:hover {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-tan);
+  color: var(--color-blue);
 }
 
 .footer__contact a:hover {

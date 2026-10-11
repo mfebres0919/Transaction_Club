@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="../css/about.css">
 
   <script src="../javascript/global.js" defer></script>
-  <script src="../javascript/about.js" defer></script>
+  <script src="../javascript/accordion.js" defer></script>
 </head>
 
 <body class="page-about">
@@ -186,6 +186,10 @@
 
       <div class="container how__inner">
 
+        <div class="how__media">
+          <div class="photo-slot how__photo" aria-hidden="true"></div>
+        </div>
+
         <div class="how__content">
           <p class="eyebrow">
             <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
@@ -235,10 +239,6 @@
           </div>
         </div>
 
-        <div class="how__media">
-          <div class="photo-slot how__photo" aria-hidden="true"></div>
-        </div>
-
       </div>
     </section>
 
@@ -248,7 +248,7 @@
          TODO: photo slot is empty until the client sends one.
          Copy is a stand-in drafted from the discovery call.
          ======================================================================== -->
-    <section class="why has-texture has-texture--particles" aria-labelledby="why-title">
+    <section class="why has-texture has-texture--pointers" aria-labelledby="why-title">
       <!-- Bubble divider: How It Works' sky blue flowing down into this section -->
       <div class="section-divider section-divider--top section-divider--bubble" aria-hidden="true"></div>
 

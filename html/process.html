@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Process | The Transaction Club</title>
+  <meta name="description" content="How The Transaction Club takes a real estate file from signed contract to closing: every document, deadline and signature handled for you.">
+
+  <!-- ==========================================================================
+       PERFORMANCE: preload above-the-fold fonts only (hero heading + body/nav)
+       ========================================================================== -->
+  <link rel="preload" href="../fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/fira-sans-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/pinyon-script-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- TODO: once the hero photo exists, preload it here like the homepage does:
+       <link rel="preload" as="image" type="image/webp" href="../images/process/hero.webp" fetchpriority="high"> -->
+
+  <!-- global.css (tokens, nav, buttons, page hero, contact, footer) →
+       process.css (this page's own sections) -->
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/process.css">
+
+  <script src="../javascript/global.js" defer></script>
+  <script src="../javascript/process.js" defer></script>
+  <script src="../javascript/accordion.js" defer></script>
+</head>
+
+<body class="page-process">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==========================================================================
+       HEADER — transparent over the hero, snaps to white on scroll (global.js)
+       ========================================================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- TODO: swap the text wordmark for the logo SVG once received -->
+      <a class="header__logo" href="../index.html" aria-label="The Transaction Club, home">
+        <span class="header__logo-small">The</span>
+        <span class="header__logo-name">Transaction Club</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="process.html" aria-current="page">Our Process</a></li>
+          <li><a class="nav__link" href="gallery.html">Gallery</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="../index.html#closing-gift">Claim Your Gift</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========================================================================
+         PAGE HERO — same as the About page: background photo, page title and
+         a breadcrumb trail.
+         TODO: no photo yet; the navy fill stands in. When one arrives, drop a
+         <picture> into .page-hero__bg (decorative, alt="", fetchpriority="high")
+         and preload it in <head>.
+         ======================================================================== -->
+    <section class="page-hero" aria-labelledby="page-hero-title">
+      <div class="page-hero__bg" aria-hidden="true">
+        <!-- <picture> goes here -->
+      </div>
+
+      <div class="container page-hero__inner">
+        <h1 class="page-hero__title" id="page-hero-title">Our <span class="page-hero__title-accent">Process</span></h1>
+
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb__list">
+            <li><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li><span aria-current="page">Our Process</span></li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Arc divider: the next section's colour rising into the photo -->
+      <div class="section-divider section-divider--arc" aria-hidden="true"></div>
+    </section>
+
+    <!-- ========================================================================
+         PROCESS CARDS — the four steps of a file.
+         Desktop (javascript/process.js): the section pins while you scroll;
+         each card slides in on top of the last, which tilts back and dims,
+         leaving its number showing. After card 04 the stack spreads into four
+         equal cards. Scrolling up reverses it.
+         Mobile: a swipeable row, cards tilting in 3D away from the centre.
+         Each card has a photo slot: down the right side of the wide stacked
+         cards on desktop (it narrows away as they spread), after the title
+         everywhere else.
+         Without JavaScript, or with reduced motion: four cards in a plain row.
+         Copy is a stand-in drafted from the discovery call.
+         ======================================================================== -->
+    <section class="process-cards" aria-labelledby="process-title">
+      <div class="process-cards__track">
+        <!-- Star dust (has-texture--particles) on the pinned block, so it fills
+             the screen instead of stretching down the whole tall track -->
+        <div class="process-cards__sticky has-texture has-texture--particles">
+          <div class="container">
+
+            <header class="process-cards__head">
+              <p class="eyebrow">
+                <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+                How It Works
+              </p>
+              <h2 class="section-title" id="process-title">
+                From signed contract to <span class="section-title__accent">closed</span>
+              </h2>
+            </header>
+
+            <ol class="process-cards__list">
+            <li class="process-card process-card--1">
+              <span class="process-card__number">01</span>
+              <div class="process-card__body">
+                <div class="process-card__heading">
+                  <svg class="process-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" /><path d="M14 3v5h5" /><path d="M9 13h6" /><path d="M9 17h4" /></svg>
+                  <h3 class="process-card__title">Contract Received</h3>
+                </div>
+                <!-- TODO: photo for this step -->
+                <div class="photo-slot process-card__photo" aria-hidden="true"></div>
+                <p class="process-card__text">You forward the executed contract and we open your file the same day.</p>
+                <ul class="process-card__list">
+                  <li class="process-card__item">File opened within hours</li>
+                  <li class="process-card__item">Every party's contact details gathered</li>
+                  <li class="process-card__item">You get a single point of contact</li>
+                </ul>
+              </div>
+            </li>
+            <li class="process-card process-card--2">
+              <span class="process-card__number">02</span>
+              <div class="process-card__body">
+                <div class="process-card__heading">
+                  <svg class="process-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2" /><path d="M16 2.5v4" /><path d="M8 2.5v4" /><path d="M3 9.5h18" /><path d="M8 14h3" /><path d="M8 17.5h6" /></svg>
+                  <h3 class="process-card__title">Timeline Mapped</h3>
+                </div>
+                <!-- TODO: photo for this step -->
+                <div class="photo-slot process-card__photo" aria-hidden="true"></div>
+                <p class="process-card__text">Every contingency, deadline and closing date laid out and shared with you.</p>
+                <ul class="process-card__list">
+                  <li class="process-card__item">Inspection, appraisal and loan dates tracked</li>
+                  <li class="process-card__item">Reminders before anything comes due</li>
+                  <li class="process-card__item">One shared timeline for everyone</li>
+                </ul>
+              </div>
+            </li>
+            <li class="process-card process-card--3">
+              <span class="process-card__number">03</span>
+              <div class="process-card__body">
+                <div class="process-card__heading">
+                  <svg class="process-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" /></svg>
+                  <h3 class="process-card__title">Signatures Chased</h3>
+                </div>
+                <!-- TODO: photo for this step -->
+                <div class="photo-slot process-card__photo" aria-hidden="true"></div>
+                <p class="process-card__text">We send, follow up and collect every signature, then check each page.</p>
+                <ul class="process-card__list">
+                  <li class="process-card__item">Documents sent and followed up</li>
+                  <li class="process-card__item">Every initial and page checked</li>
+                  <li class="process-card__item">A complete file before it reaches your broker</li>
+                </ul>
+              </div>
+            </li>
+            <li class="process-card process-card--4">
+              <span class="process-card__number">04</span>
+              <div class="process-card__body">
+                <div class="process-card__heading">
+                  <svg class="process-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1" /><path d="M12 8v13" /><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5" /></svg>
+                  <h3 class="process-card__title">Closed &amp; Gifted</h3>
+                </div>
+                <!-- TODO: photo for this step -->
+                <div class="photo-slot process-card__photo" aria-hidden="true"></div>
+                <p class="process-card__text">You close, and your closing gift is on its way to you.</p>
+                <ul class="process-card__list">
+                  <li class="process-card__item">Final file reviewed and archived</li>
+                  <li class="process-card__item">Gift hand-delivered same day if local</li>
+                  <li class="process-card__item">Or mailed within 48 hours in-state</li>
+                </ul>
+              </div>
+            </li>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FAQ — intro, photo and a "Still have questions?" card on the left;
+         questions on the right (javascript/accordion.js slides them open).
+         TODO: photo slot is empty until the client sends one.
+         Questions and answers are a stand-in drafted from the discovery call;
+         confirm them (especially pricing) with Peter and Jiang.
+         ======================================================================== -->
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="container faq__inner">
+
+        <div class="faq__intro">
+          <span class="faq__watermark" aria-hidden="true">FAQs</span>
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            FAQs
+          </p>
+          <h2 class="section-title" id="faq-title">
+            Frequently asked <span class="section-title__accent">questions</span>
+          </h2>
+          <p class="faq__text">
+            The things agents ask us most, from when to send a file to how the closing gift works.
+            Don&rsquo;t see yours? Get in touch and we&rsquo;ll answer it directly.
+          </p>
+
+          <div class="faq__media">
+            <div class="photo-slot faq__photo" aria-hidden="true"></div>
+
+            <div class="faq__help">
+              <span class="faq__help-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+              </span>
+              <div>
+                <h3 class="faq__help-title">Still have questions?</h3>
+                <p class="faq__help-text">Tell us what you&rsquo;re working on and we&rsquo;ll get back to you.</p>
+              </div>
+              <a class="btn btn--primary" href="contact.html">Get In Touch</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__list">
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">What does a transaction coordinator actually do?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>We handle the paperwork side of a sale for you: opening the file, tracking every deadline, sending documents out for signature, chasing what&rsquo;s missing and making sure the file is complete before it reaches your broker.</p>
+              </div>
+            </details>
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">When should I send you a new file?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>As soon as the contract is executed. Forward it over and we&rsquo;ll open the file the same day, so no early deadline slips past.</p>
+              </div>
+            </details>
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">Will I need to learn any new software?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>No. We work around the tools and forms you already use. You forward the contract, and we keep you updated by email and text.</p>
+              </div>
+            </details>
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">How do you keep me and my clients updated?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>You get one shared timeline with every key date, plus a heads-up before anything comes due. We only reach out to your clients the way you want us to.</p>
+              </div>
+            </details>
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">How is pricing handled?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>Pricing is per file. We&rsquo;ll walk you through it on a quick intro call, based on how many files you carry and what you need from us.</p>
+              </div>
+            </details>
+            <details class="accordion__item" name="faq">
+              <summary class="accordion__summary">
+                <span class="accordion__title">How does the closing gift work?</span>
+                <span class="accordion__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="accordion__body">
+                <p>Once a file we coordinated closes, claim your gift on our homepage. Local gifts are hand-delivered the same day, and anywhere else in-state ships within 48 hours.</p>
+              </div>
+            </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FINAL CTA — same banner as the homepage and About (global.css),
+         flipped: white on top continuing the FAQ, navy below running into
+         the footer. "Get Started" goes to the Contact page.
+         TODO: no photo yet; the navy banner stands in. Add a <picture> inside
+         .final-cta__bg when one arrives (decorative, alt="", loading="lazy").
+         ======================================================================== -->
+    <section class="final-cta final-cta--flipped" aria-labelledby="final-cta-title">
+      <span class="final-cta__spark final-cta__spark--a" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg></span>
+      <span class="final-cta__spark final-cta__spark--b" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg></span>
+
+      <div class="final-cta__banner">
+        <div class="final-cta__bg" aria-hidden="true">
+          <!-- <picture> goes here -->
+        </div>
+
+        <div class="final-cta__content">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Ready When You Are
+          </p>
+          <h2 class="final-cta__title" id="final-cta-title">
+            Hand us your next file.
+            <span class="final-cta__title-accent">We'll take it to the closing table.</span>
+          </h2>
+          <div class="final-cta__actions">
+            <a class="btn btn--light btn--badge" href="contact.html">
+              Get Started
+              <span class="btn__badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+              </span>
+            </a>
+            <a class="btn btn--outline-light" href="../index.html#closing-gift">Claim Your Gift</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER — same as the homepage, with paths adjusted for /html.
+       PLACEHOLDERS: phone, email and hours match the Contact section and
+       must be replaced with the client's real details before launch.
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+
+        <div class="footer__brand">
+          <!-- TODO: swap the text wordmark for the logo SVG once received -->
+          <a class="footer__logo" href="../index.html" aria-label="The Transaction Club, home">
+            <span class="header__logo-small">The</span>
+            <span class="header__logo-name">Transaction Club</span>
+          </a>
+          <p class="footer__blurb">
+            Transaction coordination for real estate agents. For 10 years we've managed the
+            files and chased the signatures, so you can get back to selling.
+          </p>
+          <a class="btn btn--light btn--badge footer__cta" href="contact.html">
+            Start a File
+            <span class="btn__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+            </span>
+          </a>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-pages">
+          <h2 class="footer__heading" id="footer-pages">Quick Links</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Home</a></li>
+            <li><a class="footer__link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>About</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Our Process</a></li>
+            <li><a class="footer__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Gallery</a></li>
+            <li><a class="footer__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-labelledby="footer-services">
+          <h2 class="footer__heading" id="footer-services">Services</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>File Management</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Deadline Tracking</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Signature Coordination</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Get in Touch</h2>
+          <ul class="footer__contact">
+            <li><span class="footer__contact-label">Phone</span><a href="tel:+14155550123">(415) 555-0123</a></li>
+            <li><span class="footer__contact-label">Email</span><a href="mailto:hello@thetransactionclub.com">hello@thetransactionclub.com</a></li>
+            <li><span class="footer__contact-label">Location</span>San Francisco, CA</li>
+            <li><span class="footer__contact-label">Hours</span>Mon – Fri: 9:00 AM – 6:00 PM</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 The Transaction Club. All rights reserved.</p>
+        <p class="footer__credit">Site by <a href="https://www.migsflow.com" target="_blank" rel="noopener">MigsFlow</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top" data-to-top>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></svg>
+  </button>
+
+</body>
+</html>
