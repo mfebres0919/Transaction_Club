@@ -110,3 +110,48 @@ if (process) {
 
   startProcess();
 }
+
+
+/* ==========================================================================
+   HOMEPAGE — closing gift form
+   Sends the request to the Google Apps Script web app in the gift Sheet
+   (google-apps-script/closing-gift.gs), which adds a row and emails
+   Peter & Jiang. Then the card swaps to a thank-you message.
+   ========================================================================== */
+
+// The Apps Script "Web app" URL (Deploy → Manage deployments)
+const GIFT_FORM_URL = 'https://script.google.com/macros/s/AKfycbw145n4Ixuruw6eSdg91M7JhUMoChwESSfHhlnoKrZoJ815-3zwnxzL99Oa3LkhcY0S2Q/exec';
+
+const giftForm = document.getElementById('gift-form');
+
+if (giftForm) {
+  const submit = giftForm.querySelector('.gift-form__submit');
+  const error = document.getElementById('gift-error');
+  const success = document.getElementById('gift-success');
+
+  giftForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    error.hidden = true;
+    submit.disabled = true;
+    submit.textContent = 'Sending...';
+
+    try {
+      // Form-encoded so the browser sends it straight to Google (no preflight)
+      const response = await fetch(GIFT_FORM_URL, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(giftForm)),
+      });
+      const result = await response.json();
+      if (!result.ok) throw new Error(result.error || 'Request failed');
+
+      giftForm.hidden = true;
+      success.hidden = false;
+      success.focus();
+    } catch (err) {
+      console.error('[Closing gift]', err);
+      error.hidden = false;
+      submit.disabled = false;
+      submit.textContent = 'Claim My Gift';
+    }
+  });
+}

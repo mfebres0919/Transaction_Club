@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Us | The Transaction Club</title>
+  <meta name="description" content="Get in touch with The Transaction Club. Send us your next file or ask a question, and we'll get back to you within one business day.">
+
+  <!-- ==========================================================================
+       PERFORMANCE: preload above-the-fold fonts only (hero heading + body/nav)
+       ========================================================================== -->
+  <link rel="preload" href="../fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/fira-sans-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/pinyon-script-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- TODO: once the hero photo exists, preload it here like the homepage does:
+       <link rel="preload" as="image" type="image/webp" href="../images/contact/hero.webp" fetchpriority="high"> -->
+
+  <!-- Everything this page uses (page hero, contact, footer) is in global.css -->
+  <link rel="stylesheet" href="../css/global.css">
+
+  <script src="../javascript/global.js" defer></script>
+</head>
+
+<body class="page-contact">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==========================================================================
+       HEADER — transparent over the hero, snaps to white on scroll (global.js)
+       ========================================================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- TODO: swap the text wordmark for the logo SVG once received -->
+      <a class="header__logo" href="../index.html" aria-label="The Transaction Club, home">
+        <span class="header__logo-small">The</span>
+        <span class="header__logo-name">Transaction Club</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="process.html">Our Process</a></li>
+          <li><a class="nav__link" href="gallery.html">Gallery</a></li>
+          <li><a class="nav__link" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <a class="btn btn--primary nav__cta" href="../index.html#closing-gift">Claim Your Gift</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========================================================================
+         PAGE HERO — background photo, page title and a breadcrumb trail so
+         visitors know where they are.
+         TODO: no photo yet; the navy fill stands in. When one arrives, drop a
+         <picture> into .page-hero__bg (decorative, alt="", fetchpriority="high")
+         and preload it in <head>.
+         ======================================================================== -->
+    <section class="page-hero" aria-labelledby="page-hero-title">
+      <div class="page-hero__bg" aria-hidden="true">
+        <!-- <picture> goes here -->
+      </div>
+
+      <div class="container page-hero__inner">
+        <h1 class="page-hero__title" id="page-hero-title">Contact <span class="page-hero__title-accent">Us</span></h1>
+
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb__list">
+            <li><a class="breadcrumb__link" href="../index.html">Home</a></li>
+            <li><span aria-current="page">Contact Us</span></li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Arc divider: the Contact section's colour rising into the photo -->
+      <div class="section-divider section-divider--arc" aria-hidden="true"></div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT — same section as the homepage (global.css), straight under
+         the hero, so --standalone gives it full top padding.
+         PLACEHOLDERS: phone number, email address and office hours below are
+         stand-ins — replace with the client's real details before launch.
+         TODO: form posts nowhere yet. Point action= at the form endpoint
+         (e.g. https://formspree.io/f/FORM_ID) once the account exists.
+         ======================================================================== -->
+    <section class="contact contact--standalone" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+
+        <header class="contact__head">
+          <p class="eyebrow">
+            <svg class="eyebrow__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg>
+            Get in Touch
+          </p>
+          <h2 class="section-title" id="contact-title">
+            Let's get your next file <span class="section-title__accent">moving</span>
+          </h2>
+        </header>
+
+        <div class="contact__inner">
+
+          <div class="contact__info">
+            <div class="contact__map">
+              <iframe
+                src="https://maps.google.com/maps?q=San+Francisco,+CA&amp;z=11&amp;output=embed"
+                title="Map of San Francisco, California"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+            </div>
+
+            <ul class="contact__details">
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Phone</span>
+                  <a class="contact-detail__value" href="tel:+14155550123">(415) 555-0123</a>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Email</span>
+                  <a class="contact-detail__value" href="mailto:hello@thetransactionclub.com">hello@thetransactionclub.com</a>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Location</span>
+                  <span class="contact-detail__value">San Francisco, CA</span>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></span>
+                <span>
+                  <span class="contact-detail__label">Office Hours</span>
+                  <span class="contact-detail__value">Mon – Fri: 9:00 AM – 6:00 PM</span>
+                  <span class="contact-detail__value">Sat: By appointment</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <h3 class="contact-card__title">Send us a message</h3>
+            <p class="contact-card__text">Tell us about your file and we'll get back to you within one business day.</p>
+
+            <form class="contact-form" action="#" method="post">
+              <input type="hidden" name="_subject" value="New enquiry from the Transaction Club website">
+              <!-- Honeypot: hidden from people, filled in by bots -->
+              <input class="visually-hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div class="form-field">
+                <label class="form-field__label" for="contact-first">First name</label>
+                <input class="form-field__input" id="contact-first" name="first_name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-last">Last name</label>
+                <input class="form-field__input" id="contact-last" name="last_name" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-email">Email</label>
+                <input class="form-field__input" id="contact-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="contact-phone">Phone</label>
+                <input class="form-field__input" id="contact-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="form-field contact-form__wide">
+                <label class="form-field__label" for="contact-service">Service you're interested in</label>
+                <select class="form-field__input form-field__select" id="contact-service" name="service" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option>File Management</option>
+                  <option>Deadline Tracking</option>
+                  <option>Signature Coordination</option>
+                  <option>General Question</option>
+                </select>
+              </div>
+              <div class="form-field contact-form__wide">
+                <label class="form-field__label" for="contact-message">Message <span class="form-field__optional">(optional)</span></label>
+                <textarea class="form-field__input form-field__textarea" id="contact-message" name="message" rows="4"></textarea>
+              </div>
+              <button class="btn btn--primary contact-form__submit contact-form__wide" type="submit">Send Message</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER — same as the homepage, with paths adjusted for /html.
+       PLACEHOLDERS: phone, email and hours match the Contact section and
+       must be replaced with the client's real details before launch.
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+
+        <div class="footer__brand">
+          <!-- TODO: swap the text wordmark for the logo SVG once received -->
+          <a class="footer__logo" href="../index.html" aria-label="The Transaction Club, home">
+            <span class="header__logo-small">The</span>
+            <span class="header__logo-name">Transaction Club</span>
+          </a>
+          <p class="footer__blurb">
+            Transaction coordination for real estate agents. For 10 years we've managed the
+            files and chased the signatures, so you can get back to selling.
+          </p>
+          <a class="btn btn--light btn--badge footer__cta" href="#contact">
+            Start a File
+            <span class="btn__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="8 7 17 7 17 16" /></svg>
+            </span>
+          </a>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-pages">
+          <h2 class="footer__heading" id="footer-pages">Quick Links</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Home</a></li>
+            <li><a class="footer__link" href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>About</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Our Process</a></li>
+            <li><a class="footer__link" href="gallery.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Gallery</a></li>
+            <li><a class="footer__link" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Contact</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-labelledby="footer-services">
+          <h2 class="footer__heading" id="footer-services">Services</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>File Management</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Deadline Tracking</a></li>
+            <li><a class="footer__link" href="process.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>Signature Coordination</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Get in Touch</h2>
+          <ul class="footer__contact">
+            <li><span class="footer__contact-label">Phone</span><a href="tel:+14155550123">(415) 555-0123</a></li>
+            <li><span class="footer__contact-label">Email</span><a href="mailto:hello@thetransactionclub.com">hello@thetransactionclub.com</a></li>
+            <li><span class="footer__contact-label">Location</span>San Francisco, CA</li>
+            <li><span class="footer__contact-label">Hours</span>Mon – Fri: 9:00 AM – 6:00 PM</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 The Transaction Club. All rights reserved.</p>
+        <p class="footer__credit">Site by <a href="https://www.migsflow.com" target="_blank" rel="noopener">MigsFlow</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top" data-to-top>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" /></svg>
+  </button>
+
+</body>
+</html>

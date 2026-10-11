@@ -132,27 +132,40 @@
           </div>
         </div>
 
-        <!-- Closing gift form. TODO: connect to email + Google Sheet logging -->
+        <!-- Closing gift form: script.js sends it to the Google Sheet's Apps
+             Script (google-apps-script/closing-gift.gs), which logs a row and
+             emails Peter & Jiang. -->
         <div class="gift-card" id="closing-gift">
           <p class="gift-card__eyebrow">Closed a file with us?</p>
           <h2 class="gift-card__title">Claim your free closing gift</h2>
           <p class="gift-card__text">Hand-delivered same day if you're local, or mailed within 48 hours anywhere in-state.</p>
 
-          <form class="gift-form" action="#" method="post">
-            <div class="form-field">
-              <label class="form-field__label" for="gift-name">Your name</label>
-              <input class="form-field__input" id="gift-name" name="name" type="text" autocomplete="name" required>
+          <form class="gift-form" id="gift-form" action="#" method="post">
+            <!-- Honeypot: hidden from people, filled in by bots -->
+            <div class="gift-form__trap" aria-hidden="true">
+              <label for="gift-company">Company</label>
+              <input id="gift-company" name="company" type="text" tabindex="-1" autocomplete="off">
             </div>
             <div class="form-field">
-              <label class="form-field__label" for="gift-address">Your mailing address</label>
-              <input class="form-field__input" id="gift-address" name="address" type="text" autocomplete="street-address" required>
+              <label class="form-field__label" for="gift-name">Your name</label>
+              <input class="form-field__input" id="gift-name" name="name" type="text" autocomplete="name" placeholder="Ex: Jane Doe" required>
+            </div>
+            <div class="form-field">
+              <label class="form-field__label" for="gift-address">Your mailing address <span class="form-field__optional">(include apt or unit #)</span></label>
+              <input class="form-field__input" id="gift-address" name="address" type="text" autocomplete="street-address" placeholder="Ex: 1234 Pine St, San Jose, CA 95112" required>
             </div>
             <div class="form-field">
               <label class="form-field__label" for="gift-listing">Listing address</label>
-              <input class="form-field__input" id="gift-listing" name="listing_address" type="text" required>
+              <input class="form-field__input" id="gift-listing" name="listing_address" type="text" placeholder="Ex: 5678 Oak Ave, Oakland, CA 94610" required>
             </div>
             <button class="btn btn--primary gift-form__submit" type="submit">Claim My Gift</button>
+            <p class="gift-form__error" id="gift-error" role="alert" hidden>Something went wrong. Please try again in a moment.</p>
           </form>
+
+          <div class="gift-card__success" id="gift-success" tabindex="-1" hidden>
+            <p class="gift-card__success-title">Thank you, your gift is on its way!</p>
+            <p class="gift-card__text">We've got your details. Local gifts are hand-delivered the same day, and anywhere else in-state ships within 48 hours.</p>
+          </div>
         </div>
 
       </div>

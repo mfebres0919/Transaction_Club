@@ -198,6 +198,51 @@
   margin-top: 0.5rem;
 }
 
+.gift-form__submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Honeypot field, kept off screen */
+.gift-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.gift-form__error {
+  font-size: 0.875rem;
+  color: #b42318;
+}
+
+.gift-form[hidden],
+.gift-form__error[hidden],
+.gift-card__success[hidden] {
+  display: none;
+}
+
+/* Thank-you message that replaces the form */
+.gift-card__success {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  background-color: var(--color-sky);
+  outline: none;
+}
+
+.gift-card__success-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-green);
+}
+
+.gift-card__success .gift-card__text {
+  margin-top: 0.375rem;
+}
+
 @media (min-width: 768px) {
   .gift-card {
     padding: 2.25rem 2rem;
@@ -1481,162 +1526,6 @@
 
   .final-cta__spark--b svg {
     fill: var(--color-green);
-  }
-}
-
-
-/* ==========================================================================
-   CONTACT
-   Continues the cream from the bottom half of the final CTA. Mobile: map and
-   details, then the form. Desktop (1024px+): side by side.
-   ========================================================================== */
-
-.contact {
-  padding-block: 1rem 5rem;
-  background-color: var(--color-tan-light);
-}
-
-.contact__head {
-  max-width: 40rem;
-}
-
-.contact__inner {
-  display: grid;
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-/* ---------- Map + details ---------- */
-
-.contact__map {
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  border-radius: 1.5rem;
-  background-color: var(--color-tan);
-}
-
-.contact__map iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.contact__details {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.contact-detail {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.contact-detail__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  flex: none;
-  border-radius: 50%;
-  background-color: var(--color-green);
-  color: var(--color-tan);
-}
-
-.contact-detail__icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.contact-detail__label {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.contact-detail__value {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  font-weight: 500;
-  overflow-wrap: anywhere;
-}
-
-a.contact-detail__value:hover {
-  color: var(--color-green);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* ---------- Form ---------- */
-
-.contact-card {
-  padding: 2rem 1.5rem;
-  border-radius: 1.75rem;
-  background-color: var(--color-white);
-  box-shadow: 0 1px 0 rgba(20, 20, 20, 0.04), 0 24px 50px rgba(19, 36, 61, 0.08);
-}
-
-.contact-card__title {
-  font-size: 1.625rem;
-}
-
-.contact-card__text {
-  margin-top: 0.5rem;
-  color: var(--color-muted);
-}
-
-.contact-form {
-  display: grid;
-  gap: 1.25rem;
-  margin-top: 1.75rem;
-}
-
-.contact-form__submit {
-  width: 100%;
-  margin-top: 0.5rem;
-}
-
-@media (min-width: 640px) {
-  .contact-form {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .contact-form__wide {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (min-width: 768px) {
-  .contact-card {
-    padding: 2.75rem 2.5rem;
-  }
-
-  .contact__details {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .contact {
-    padding-bottom: 7.5rem;
-  }
-
-  .contact__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    align-items: start;
-    gap: 4rem;
-  }
-
-  /* The map column is narrower here; one detail per row avoids cramped wraps */
-  .contact__details {
-    grid-template-columns: 1fr;
   }
 }
 

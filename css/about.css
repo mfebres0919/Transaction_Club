@@ -1,0 +1,464 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES
+   Loads after global.css and styles.css. The page hero and Contact section
+   are shared (global.css); About and Final CTA reuse the homepage styles
+   (styles.css). Only this page's own sections live here.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   ABOUT — homepage section, but no stats strip follows it here, so the
+   foot gets full padding back
+   ========================================================================== */
+
+.page-about .about {
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .page-about .about {
+    padding-bottom: 7.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   HOW IT WORKS
+   Mobile: copy + accordion, then the photo. Desktop (1024px+): side by side.
+   ========================================================================== */
+
+.how {
+  position: relative;
+  /* Top padding clears the arc divider hanging from the top edge */
+  padding-block: calc(5rem + var(--divider-height)) 5rem;
+  /* Pale sky, not white: white is too close to the cream on either side
+     for the dividers to show */
+  background-color: var(--color-sky);
+}
+
+/* Arc divider: the About section's cream hanging down into the sky */
+.how .section-divider {
+  --divider-color: var(--color-tan-light);
+}
+
+.how__inner {
+  display: grid;
+  gap: 3rem;
+}
+
+.how__text {
+  max-width: 36rem;
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+.how__photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 2rem;
+}
+
+/* ---------- Accordion ---------- */
+
+.accordion {
+  margin-top: 2.5rem;
+}
+
+.accordion__item + .accordion__item {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-green-dark);
+  list-style: none; /* hides the default triangle */
+  cursor: pointer;
+}
+
+.accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion__number {
+  flex: none;
+  min-width: 1.75rem;
+  color: var(--color-green);
+}
+
+.accordion__title {
+  flex: 1 1 auto;
+}
+
+.accordion__icon {
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--color-green);
+  transition: transform var(--transition);
+}
+
+.accordion__item[open]:not(.is-closing) .accordion__icon {
+  transform: rotate(180deg);
+}
+
+.accordion__summary:hover .accordion__title {
+  color: var(--color-green);
+}
+
+/* Clips the text while the panel slides (about.js). The padding sits on the
+   paragraph, not here, so the panel can collapse all the way to 0. */
+.accordion__body {
+  overflow: hidden;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+/* Lined up under the title, past the number */
+.accordion__body > p {
+  padding: 0 2.5rem 1.5rem 2.75rem;
+}
+
+@media (min-width: 1024px) {
+  .how {
+    padding-block: calc(7.5rem + var(--divider-height)) 7.5rem;
+  }
+
+  .how__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 5rem;
+  }
+
+  /* Tall frame, as in the reference */
+  .how__photo {
+    aspect-ratio: 0.95;
+  }
+
+  .accordion__summary {
+    font-size: 1.25rem;
+  }
+}
+
+
+/* ==========================================================================
+   WHY CHOOSE US
+   Mobile: copy, cards, button, then the photo. Desktop (1024px+): copy left,
+   photo right. The "years" box sits in the photo's bottom-left corner; its
+   thick top/right border in the section colour cuts it out of the photo.
+   ========================================================================== */
+
+.why {
+  --texture-opacity: 0.08;
+  /* Top padding clears the bubble divider hanging from the top edge */
+  padding-block: calc(5rem + var(--divider-height)) 5rem;
+  background-color: var(--color-tan-light);
+}
+
+/* Bubble divider: How It Works' sky flowing down into the cream */
+.why .section-divider {
+  --divider-color: var(--color-sky);
+}
+
+.why__inner {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.why__text {
+  max-width: 36rem;
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+/* ---------- Feature cards ---------- */
+
+.why__cards {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.why-card {
+  padding: 2rem 1.5rem;
+  border-radius: 1.75rem;
+  text-align: center;
+  background-color: var(--color-white);
+  box-shadow: 0 1px 0 rgba(20, 20, 20, 0.04), 0 18px 40px rgba(19, 36, 61, 0.06);
+}
+
+.why-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background-color: var(--color-tan);
+  color: var(--color-green);
+}
+
+.why-card__icon svg {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.why-card__title {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.why-card__text {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.why__cta {
+  margin-top: 2.5rem;
+}
+
+/* ---------- Photo + years box ---------- */
+
+.why__media {
+  position: relative;
+}
+
+.why__photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 2rem;
+}
+
+.why__stat {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52%;
+  padding: 1.75rem 1rem;
+  border: solid var(--color-tan-light);
+  border-width: 0.625rem 0.625rem 0 0;
+  /* Bottom-left matches the photo's corner; top-right curves the cut-out */
+  border-radius: 0 2.25rem 0 2rem;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-green);
+  background-clip: padding-box;
+}
+
+.why__stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw + 1rem, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.why__stat-label {
+  margin-top: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1vw + 0.75rem, 1.25rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+@media (min-width: 640px) {
+  .why__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* No need for a full-height portrait frame on wide phones and tablets */
+  .why__photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  .why__stat {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .why {
+    padding-block: calc(7.5rem + var(--divider-height)) 7.5rem;
+  }
+
+  .why__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .why__photo {
+    aspect-ratio: 0.85;
+  }
+
+  .why__stat {
+    width: 50%;
+  }
+}
+
+
+/* ==========================================================================
+   OUR PROCESS (steps)
+   Background photo under a navy wash, white text. Phones: stacked. Tablet
+   (640px+): 2 x 2. Desktop (1024px+): one row of four with an arrow drawn
+   between each pair of icons. The wash deepens to solid navy at the foot so
+   the section runs straight into the navy top half of the Final CTA.
+   ========================================================================== */
+
+.steps-section {
+  position: relative;
+  isolation: isolate;
+  /* Top padding clears the arc divider hanging from the top edge */
+  padding-block: calc(5rem + var(--divider-height)) 5rem;
+  color: var(--color-white);
+  /* Shows until the photo is added (and while it loads) */
+  background-color: var(--color-green-dark);
+}
+
+/* Arc divider: the Why Choose Us cream hanging down over the photo */
+.steps-section .section-divider {
+  --divider-color: var(--color-tan-light);
+}
+
+.steps-section__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.steps-section__bg picture,
+.steps-section__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.steps-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg,
+    rgba(19, 36, 61, 0.78) 0%,
+    rgba(19, 36, 61, 0.85) 70%,
+    var(--color-green-dark) 100%);
+}
+
+.steps-section .eyebrow,
+.steps-section .section-title__accent {
+  color: var(--color-tan);
+}
+
+.steps-section__head {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  gap: 3rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  text-align: center;
+}
+
+/* White tile with a soft outer ring; the number badge hangs off its corner */
+.step__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  height: 7rem;
+  margin-inline: auto;
+  border-radius: 1.5rem;
+  color: var(--color-green);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 0.5rem rgba(255, 255, 255, 0.15);
+}
+
+.step__icon svg {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.step__number {
+  position: absolute;
+  top: -0.875rem;
+  right: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-green-dark);
+  background-color: var(--color-tan);
+}
+
+.step__title {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.step__text {
+  max-width: 18rem;
+  margin: 0.75rem auto 0;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps-section {
+    padding-block: calc(7.5rem + var(--divider-height)) 7.5rem;
+  }
+
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 4.5rem;
+  }
+
+  /* Arrow centred in the gap between this icon and the next */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 3.5rem;
+    left: calc(100% + 1rem);
+    width: 3.5rem;
+    height: 1.5rem;
+    transform: translate(-50%, -50%);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' fill='none' stroke='%23ede4d6' stroke-opacity='0.6' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='2' y1='12' x2='54' y2='12'/%3E%3Cpolyline points='44 3 54 12 44 21'/%3E%3C/svg%3E") center / contain no-repeat;
+    pointer-events: none;
+  }
+}
