@@ -14,8 +14,9 @@
   <link rel="preload" href="../fonts/fira-sans-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/pinyon-script-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- TODO: once the hero photo exists, preload it here like the homepage does:
-       <link rel="preload" as="image" type="image/webp" href="../images/contact/hero.webp" fetchpriority="high"> -->
+  <!-- Hero photo: phones get the portrait crop -->
+  <link rel="preload" as="image" type="image/webp" href="../images/home/hero-4-m.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="../images/home/hero-4.webp" media="(min-width: 768px)" fetchpriority="high">
 
   <!-- Everything this page uses (page hero, contact, footer) is in global.css -->
   <link rel="stylesheet" href="../css/global.css">
@@ -64,13 +65,16 @@
     <!-- ========================================================================
          PAGE HERO — background photo, page title and a breadcrumb trail so
          visitors know where they are.
-         TODO: no photo yet; the navy fill stands in. When one arrives, drop a
-         <picture> into .page-hero__bg (decorative, alt="", fetchpriority="high")
-         and preload it in <head>.
+         Photo: images/home/hero-4 (portrait "-m" crop on phones), preloaded in <head>.
          ======================================================================== -->
     <section class="page-hero" aria-labelledby="page-hero-title">
       <div class="page-hero__bg" aria-hidden="true">
-        <!-- <picture> goes here -->
+        <picture>
+          <source media="(max-width: 767px)" srcset="../images/home/hero-4-m.webp" type="image/webp" width="560" height="941">
+          <source media="(max-width: 767px)" srcset="../images/home/hero-4-m.jpg" type="image/jpeg" width="560" height="941">
+          <source srcset="../images/home/hero-4.webp" type="image/webp">
+          <img src="../images/home/hero-4.jpg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+        </picture>
       </div>
 
       <div class="container page-hero__inner">

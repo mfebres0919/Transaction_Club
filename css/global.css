@@ -59,7 +59,7 @@
 
 
 /* ==========================================================================
-   DESIGN TOKENS — palette is a first draft (white, baby blue, navy)
+   DESIGN TOKENS — palette is a first draft (white, baby blue, navy, mustard accent)
    ========================================================================== */
 
 :root {
@@ -70,6 +70,8 @@
   --color-blue-dark: #c5dcf1; /* deeper baby blue (was tan #ebdecc) */
   --color-green: #1f3a5f; /* TRIAL: navy (was green #1e3b2f) */
   --color-green-dark: #13243d; /* TRIAL: deep navy (was #142a21) */
+  --color-gold: #e9b44c; /* mustard accent: calls to action, labels on navy */
+  --color-gold-dark: #d29a2c; /* gold hover */
   --color-ink: #141414;
   --color-white: #ffffff;
   --color-muted: #56606c;
@@ -239,10 +241,11 @@ select {
   color: var(--color-green);
 }
 
+/* The sparkle is gold everywhere; the label text stays the section's colour */
 .eyebrow__icon {
   width: 0.75rem;
   height: 0.75rem;
-  fill: currentColor;
+  fill: var(--color-gold);
 }
 
 /* Section heading (h2) with an optional script-font accent word */
@@ -299,7 +302,7 @@ select {
 .stars {
   display: inline-flex;
   gap: 0.2rem;
-  color: #e3a33b;
+  color: var(--color-gold);
 }
 
 .stars svg {
@@ -761,14 +764,18 @@ select {
     background-color: var(--color-blue);
   }
 
-  /* CTA reads blue over photos, then green once the header turns white */
+  /* "Claim Your Gift" is gold in both header states, like the inspiration
+     site's "Order Services" */
+  .nav__cta,
   .header:not(.is-scrolled) .nav__cta {
-    background-color: var(--color-blue);
+    background-color: var(--color-gold);
     color: var(--color-ink);
   }
 
+  .nav__cta:hover,
   .header:not(.is-scrolled) .nav__cta:hover {
-    background-color: var(--color-white);
+    background-color: var(--color-gold-dark);
+    color: var(--color-ink);
   }
 }
 
@@ -853,7 +860,7 @@ select {
   font-size: 1.15em;
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--color-blue);
+  color: var(--color-gold);
 }
 
 /* ---------- Breadcrumb ---------- */
@@ -905,8 +912,49 @@ select {
    ========================================================================== */
 
 .contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding-block: 1rem 5rem;
   background-color: var(--color-white-bg);
+}
+
+/* Background: two soft baby-blue glows (behind the map, top left, and the
+   form, bottom right) over a faint navy dot grid. The grid fades out at the
+   top so the section still blends into the white foot of the Final CTA.
+   The Gallery page's grid section uses the same background (.gallery). */
+.gallery {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.contact::before,
+.contact::after,
+.gallery::before,
+.gallery::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact::before,
+.gallery::before {
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(31, 58, 95, 0.24) 1.3px, transparent 1.7px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 75%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 75%, transparent 100%);
+}
+
+.contact::after,
+.gallery::after {
+  inset: 0;
+  background:
+    radial-gradient(ellipse 44rem 32rem at 4% 55%, rgba(169, 196, 222, 0.55), transparent 70%),
+    radial-gradient(ellipse 48rem 34rem at 100% 90%, rgba(169, 196, 222, 0.6), transparent 70%),
+    radial-gradient(ellipse 30rem 22rem at 70% 20%, rgba(220, 235, 248, 0.9), transparent 70%);
 }
 
 /* Contact page: straight under the page hero (no Final CTA above), so it
@@ -1168,7 +1216,19 @@ a.contact-detail__value:hover {
 }
 
 .final-cta .eyebrow {
-  color: var(--color-blue);
+  color: var(--color-gold);
+}
+
+/* Gold "Get Started" (and the footer's "Start a File") */
+.final-cta .btn--light,
+.footer__cta.btn--light {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.final-cta .btn--light:hover,
+.footer__cta.btn--light:hover {
+  background-color: var(--color-gold-dark);
 }
 
 .final-cta__title {

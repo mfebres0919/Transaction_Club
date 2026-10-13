@@ -139,7 +139,7 @@
   font-size: 0.95em;
   font-weight: 400;
   letter-spacing: 0;
-  color: var(--color-blue);
+  color: var(--color-gold);
 }
 
 .hero__text {
@@ -193,9 +193,16 @@
   margin-top: 1.5rem;
 }
 
+/* Gold, so the gift button is the brightest thing in the hero */
 .gift-form__submit {
   width: 100%;
   margin-top: 0.5rem;
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.gift-form__submit:hover {
+  background-color: var(--color-gold-dark);
 }
 
 .gift-form__submit:disabled {
@@ -286,6 +293,9 @@
    ========================================================================== */
 
 .about {
+  /* Gold line art behind the section (has-texture) */
+  --texture-color: var(--color-gold);
+  --texture-opacity: 0.28;
   /* Shorter at the foot: the stats strip follows closely */
   padding-block: 5rem 2.5rem;
   background-color: var(--color-white-bg);
@@ -458,9 +468,9 @@
 
 .services {
   --services-overlap: 9rem;
-  /* Blue drifting particles over the green (has-texture--particles) */
-  --texture-color: var(--color-blue);
-  --texture-opacity: 0.35;
+  /* Gold drifting particles over the navy (has-texture--particles) */
+  --texture-color: var(--color-gold);
+  --texture-opacity: 0.6;
   color: var(--color-white);
   background-color: var(--color-green-dark);
 }
@@ -480,9 +490,12 @@
 }
 
 /* Header colours flipped for the dark band */
-.services__top .eyebrow,
 .services__top .section-title__accent {
   color: var(--color-blue);
+}
+
+.services__top .eyebrow {
+  color: var(--color-gold);
 }
 
 /* A green button would vanish on green, so it turns blue here */
@@ -1129,7 +1142,7 @@
 }
 
 .process .eyebrow {
-  color: var(--color-blue);
+  color: var(--color-gold);
 }
 
 .process .section-title__accent {

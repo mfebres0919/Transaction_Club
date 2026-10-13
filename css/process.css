@@ -20,10 +20,10 @@
   background-color: var(--color-white-bg);
 }
 
-/* Navy star dust drifting behind the cards (has-texture--particles) */
+/* Gold star dust drifting behind the cards (has-texture--particles) */
 .process-cards__sticky {
-  --texture-color: var(--color-green);
-  --texture-opacity: 0.5;
+  --texture-color: var(--color-gold);
+  --texture-opacity: 0.8;
 }
 
 .process-cards__head {

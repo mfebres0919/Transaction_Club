@@ -156,7 +156,9 @@
    ========================================================================== */
 
 .why {
-  --texture-opacity: 0.12;
+  /* Gold pointers from both edges (has-texture--pointers) */
+  --texture-color: var(--color-gold);
+  --texture-opacity: 0.2;
   /* Top padding clears the bubble divider hanging from the top edge */
   padding-block: calc(5rem + var(--divider-height)) 5rem;
   background-color: var(--color-white-bg);
@@ -358,9 +360,12 @@
     var(--color-green-dark) 100%);
 }
 
-.steps-section .eyebrow,
 .steps-section .section-title__accent {
   color: var(--color-blue);
+}
+
+.steps-section .eyebrow {
+  color: var(--color-gold);
 }
 
 .steps-section__head {

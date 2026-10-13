@@ -14,8 +14,9 @@
   <link rel="preload" href="../fonts/fira-sans-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/pinyon-script-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- TODO: once the hero photo exists, preload it here like the homepage does:
-       <link rel="preload" as="image" type="image/webp" href="../images/about/hero.webp" fetchpriority="high"> -->
+  <!-- Hero photo: phones get the portrait crop -->
+  <link rel="preload" as="image" type="image/webp" href="../images/home/hero-2-m.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="../images/home/hero-2.webp" media="(min-width: 768px)" fetchpriority="high">
 
   <!-- global.css (tokens, nav, buttons, page hero, contact, footer) →
        styles.css (the About and Final CTA sections shared with the homepage)
@@ -69,13 +70,16 @@
     <!-- ========================================================================
          PAGE HERO — background photo, page title and a breadcrumb trail so
          visitors know where they are.
-         TODO: no photo yet; the navy fill stands in. When one arrives, drop a
-         <picture> into .page-hero__bg (decorative, alt="", fetchpriority="high")
-         and preload it in <head>.
+         Photo: images/home/hero-2 (portrait "-m" crop on phones), preloaded in <head>.
          ======================================================================== -->
     <section class="page-hero" aria-labelledby="page-hero-title">
       <div class="page-hero__bg" aria-hidden="true">
-        <!-- <picture> goes here -->
+        <picture>
+          <source media="(max-width: 767px)" srcset="../images/home/hero-2-m.webp" type="image/webp" width="560" height="941">
+          <source media="(max-width: 767px)" srcset="../images/home/hero-2-m.jpg" type="image/jpeg" width="560" height="941">
+          <source srcset="../images/home/hero-2.webp" type="image/webp">
+          <img src="../images/home/hero-2.jpg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+        </picture>
       </div>
 
       <div class="container page-hero__inner">
@@ -372,8 +376,7 @@
     <!-- ========================================================================
          FINAL CTA — same banner as the homepage (styles.css). The navy top
          half continues the foot of Our Process, as on the homepage.
-         TODO: no photo yet; the navy banner stands in. Add a <picture> inside
-         .final-cta__bg when one arrives (decorative, alt="", loading="lazy").
+         Photo: images/home/final-cta (Golden Gate view), same as the homepage.
          ======================================================================== -->
     <section class="final-cta" aria-labelledby="final-cta-title">
       <span class="final-cta__spark final-cta__spark--a" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z" /></svg></span>
@@ -381,7 +384,12 @@
 
       <div class="final-cta__banner">
         <div class="final-cta__bg" aria-hidden="true">
-          <!-- <picture> goes here -->
+          <picture>
+            <source media="(max-width: 767px)" srcset="../images/home/final-cta-m.webp" type="image/webp" width="640" height="800">
+            <source media="(max-width: 767px)" srcset="../images/home/final-cta-m.jpg" type="image/jpeg" width="640" height="800">
+            <source srcset="../images/home/final-cta.webp" type="image/webp">
+            <img src="../images/home/final-cta.jpg" alt="" width="1448" height="579" loading="lazy" decoding="async">
+          </picture>
         </div>
 
         <div class="final-cta__content">
