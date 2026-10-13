@@ -125,6 +125,11 @@ html {
   }
 }
 
+/* Lenis does its own smoothing; CSS smooth scroll on top would fight it */
+html.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);

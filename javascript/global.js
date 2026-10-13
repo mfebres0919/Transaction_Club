@@ -42,8 +42,9 @@ window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
   if (event.matches) setMenu(false);
 });
 
-/* Back to top: shows after one screen of scrolling. scrollTo inherits the
-   smooth scroll from CSS, which is already off for reduced motion. */
+/* Back to top: shows after one screen of scrolling. Glides through Lenis
+   when smooth scrolling is on (smooth-scroll.js), otherwise falls back to
+   the CSS smooth scroll, which is already off for reduced motion. */
 const toTop = document.querySelector('[data-to-top]');
 
 if (toTop) {
@@ -55,7 +56,8 @@ if (toTop) {
   window.addEventListener('scroll', updateToTop, { passive: true });
 
   toTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0 });
+    if (window.lenis) window.lenis.scrollTo(0);
+    else window.scrollTo({ top: 0 });
     // Hand focus back to the top so keyboard users continue from there
     document.querySelector('.header__logo')?.focus({ preventScroll: true });
   });
