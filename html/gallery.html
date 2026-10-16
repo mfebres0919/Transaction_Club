@@ -39,10 +39,16 @@
   <header class="header" id="header">
     <div class="container header__inner">
 
-      <!-- TODO: swap the text wordmark for the logo SVG once received -->
-      <a class="header__logo" href="../index.html" aria-label="The Transaction Club, home">
-        <span class="header__logo-small">The</span>
-        <span class="header__logo-name">Transaction Club</span>
+      <a class="header__logo" href="../index.html" aria-label="The Transaction Coordinator Club, home">
+        <!-- White version over the hero; blue version once the header turns white (CSS swaps them) -->
+        <picture class="header__logo-img header__logo-img--light">
+          <source type="image/webp" srcset="../images/logos/tcc-logo-white.webp">
+          <img src="../images/logos/tcc-logo-white.png" alt="" width="480" height="307" decoding="async">
+        </picture>
+        <picture class="header__logo-img header__logo-img--dark">
+          <source type="image/webp" srcset="../images/logos/tcc-logo-blue.webp">
+          <img src="../images/logos/tcc-logo-blue.png" alt="" width="480" height="307" decoding="async">
+        </picture>
       </a>
 
       <nav class="nav" id="nav" aria-label="Primary">
@@ -268,10 +274,11 @@
       <div class="footer__top">
 
         <div class="footer__brand">
-          <!-- TODO: swap the text wordmark for the logo SVG once received -->
-          <a class="footer__logo" href="../index.html" aria-label="The Transaction Club, home">
-            <span class="header__logo-small">The</span>
-            <span class="header__logo-name">Transaction Club</span>
+              <a class="footer__logo" href="../index.html" aria-label="The Transaction Coordinator Club, home">
+            <picture>
+              <source type="image/webp" srcset="../images/logos/tcc-logo-white.webp">
+              <img src="../images/logos/tcc-logo-white.png" alt="" width="480" height="307" loading="lazy" decoding="async">
+            </picture>
           </a>
           <p class="footer__blurb">
             Transaction coordination for real estate agents. For 10 years we've managed the

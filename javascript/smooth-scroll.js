@@ -16,7 +16,7 @@
     -parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) * 16 || -80;
 
   const lenis = new Lenis({
-    duration: 1.1, // seconds a wheel scroll takes to settle; higher = floatier
+    duration: 1.2, // seconds a wheel scroll takes to settle; higher = floatier
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // fast start, soft landing
     smoothWheel: true,
     anchors: { offset: headerOffset() },

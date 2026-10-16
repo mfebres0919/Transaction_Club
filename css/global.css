@@ -595,25 +595,27 @@ select {
   height: var(--header-height);
 }
 
-/* Text wordmark — placeholder until the client's logo arrives */
+/* Logo: white over the hero, the brand-blue version once the header turns white */
 .header__logo {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-heading);
-  line-height: 1;
+  display: block;
+  flex-shrink: 0;
 }
 
-.header__logo-small {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+.header__logo-img img {
+  display: block;
+  width: auto;
+  height: 3.25rem;
 }
 
-.header__logo-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+.header__logo-img--dark,
+.header.is-scrolled .header__logo-img--light,
+.header.is-open .header__logo-img--light {
+  display: none;
+}
+
+.header.is-scrolled .header__logo-img--dark,
+.header.is-open .header__logo-img--dark {
+  display: block;
 }
 
 /* Mobile dropdown panel */
@@ -709,8 +711,9 @@ select {
 }
 
 @media (min-width: 1024px) {
-  .header__logo-name {
-    font-size: 1.375rem;
+
+  .header__logo-img img {
+    height: 4rem;
   }
 
   .nav-toggle {
@@ -1359,11 +1362,13 @@ a.contact-detail__value:hover {
 }
 
 .footer__logo {
-  display: inline-flex;
-  flex-direction: column;
-  font-family: var(--font-heading);
-  line-height: 1;
-  color: var(--color-white);
+  display: inline-block;
+}
+
+.footer__logo img {
+  display: block;
+  width: auto;
+  height: 5.5rem;
 }
 
 .footer__blurb {
